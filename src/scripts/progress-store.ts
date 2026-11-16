@@ -172,6 +172,13 @@ export function clearCompletedDays(
 
 export function buildBackupUrl(currentHref: string, days: Iterable<number>): string {
   const url = new URL(currentHref);
+  if (url.protocol !== 'https:' && url.protocol !== 'http:') {
+    throw new Error('Backup links require an http or https URL');
+  }
+  url.username = '';
+  url.password = '';
+  url.search = '';
+  url.hash = '';
   url.searchParams.set('p', encodeProgressToken(days));
   return url.toString();
 }

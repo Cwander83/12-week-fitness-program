@@ -16,7 +16,7 @@ interface DayManifestEntry {
   weekNumber: number;
 }
 
-type DayManifest = Record<string, DayManifestEntry>;
+type DayManifest = Map<number, DayManifestEntry>;
 
 interface ViewTransitionLike {
   types?: Set<string>;
@@ -96,13 +96,47 @@ function toggleColorScheme(): void {
   syncThemeToggleUI();
 }
 
+function sanitizeLocalHref(href: string | null | undefined, fallback = '/day/1'): string {
+  if (typeof href === 'string' && href.startsWith('/') && !href.startsWith('//') && !href.startsWith('/\\')) {
+    return href;
+  }
+  return fallback;
+}
+
 function readManifest(): DayManifest {
+  const manifest: DayManifest = new Map();
   const el = document.getElementById('program-day-manifest');
-  if (!el?.textContent) return {};
+  if (!el?.textContent) return manifest;
   try {
-    return JSON.parse(el.textContent) as DayManifest;
+    const parsed: unknown = JSON.parse(el.textContent);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return manifest;
+    }
+    for (const [rawKey, rawVal] of Object.entries(parsed)) {
+      if (!/^\d+$/.test(rawKey)) continue;
+      const dayNum = Number(rawKey);
+      if (!Number.isInteger(dayNum) || dayNum < 1 || dayNum > TOTAL_DAYS || String(dayNum) !== rawKey) {
+        continue;
+      }
+      if (!rawVal || typeof rawVal !== 'object' || Array.isArray(rawVal)) continue;
+      const candidate = rawVal as { title?: unknown; weekNumber?: unknown };
+      if (
+        typeof candidate.title === 'string' &&
+        candidate.title.length > 0 &&
+        typeof candidate.weekNumber === 'number' &&
+        Number.isInteger(candidate.weekNumber) &&
+        candidate.weekNumber >= 1 &&
+        candidate.weekNumber <= 12
+      ) {
+        manifest.set(dayNum, {
+          title: candidate.title,
+          weekNumber: candidate.weekNumber,
+        });
+      }
+    }
+    return manifest;
   } catch {
-    return {};
+    return manifest;
   }
 }
 
@@ -131,8 +165,13 @@ function setupDirectionalViewTransitions(): void {
     if (!fromUrlStr || !toUrlStr) return;
 
     try {
-      const fromPath = new URL(fromUrlStr, window.location.origin).pathname;
-      const toPath = new URL(toUrlStr, window.location.origin).pathname;
+      const fromUrl = new URL(fromUrlStr, window.location.origin);
+      const toUrl = new URL(toUrlStr, window.location.origin);
+      if (fromUrl.origin !== window.location.origin || toUrl.origin !== window.location.origin) {
+        return;
+      }
+      const fromPath = fromUrl.pathname;
+      const toPath = toUrl.pathname;
 
       const dayFrom = fromPath.match(/\/day\/(\d+)/);
       const dayTo = toPath.match(/\/day\/(\d+)/);
@@ -173,7 +212,8 @@ function initApp(): void {
       if (imported !== null) {
         writeCompletedDays(imported, window.localStorage);
         currentUrl.searchParams.delete('p');
-        const nextUrl = currentUrl.pathname + currentUrl.search + currentUrl.hash;
+        const safePath = currentUrl.pathname.replace(/^\/+/, '/') || '/';
+        const nextUrl = safePath + currentUrl.search + currentUrl.hash;
         window.history.replaceState(window.history.state, '', nextUrl);
       }
     }
@@ -200,11 +240,11 @@ function initApp(): void {
     const pct = Math.round((count / TOTAL_DAYS) * 100);
     const doneSet = new Set(days);
     const nextDay = computeNextDay(days);
-    const nextMeta = nextDay !== null ? manifest[String(nextDay)] : undefined;
+    const nextMeta = nextDay !== null ? manifest.get(nextDay) : undefined;
 
     for (const cta of document.querySelectorAll<HTMLAnchorElement>('[data-hero-cta]')) {
       if (!cta.dataset.defaultHref) {
-        cta.dataset.defaultHref = cta.getAttribute('href') ?? '/day/1';
+        cta.dataset.defaultHref = sanitizeLocalHref(cta.getAttribute('href'), '/day/1');
       }
       const labelEl = cta.querySelector<HTMLElement>('[data-hero-cta-label]') ?? cta;
       if (!cta.dataset.defaultLabel) {
@@ -221,7 +261,7 @@ function initApp(): void {
         cta.setAttribute('href', `/day/${nextDay}`);
       } else {
         labelEl.textContent = cta.dataset.defaultLabel;
-        cta.setAttribute('href', cta.dataset.defaultHref);
+        cta.setAttribute('href', sanitizeLocalHref(cta.dataset.defaultHref, '/day/1'));
       }
     }
 
@@ -364,15 +404,19 @@ function initApp(): void {
       btn.dataset.defaultLabel = labelEl.textContent?.trim() ?? 'Copy Backup Link';
     }
     btn.addEventListener('click', () => {
-      const url = buildBackupUrl(window.location.href, completedDays);
-      window.navigator.clipboard?.writeText(url)?.catch(() => {});
-      labelEl.textContent = 'Copied!';
-      btn.setAttribute('data-copied', 'true');
-      window.clearTimeout(copyTimer);
-      copyTimer = window.setTimeout(() => {
-        labelEl.textContent = btn.dataset.defaultLabel ?? 'Copy Backup Link';
-        btn.removeAttribute('data-copied');
-      }, 2400);
+      try {
+        const url = buildBackupUrl(window.location.href, completedDays);
+        window.navigator.clipboard?.writeText(url)?.catch(() => {});
+        labelEl.textContent = 'Copied!';
+        btn.setAttribute('data-copied', 'true');
+        window.clearTimeout(copyTimer);
+        copyTimer = window.setTimeout(() => {
+          labelEl.textContent = btn.dataset.defaultLabel ?? 'Copy Backup Link';
+          btn.removeAttribute('data-copied');
+        }, 2400);
+      } catch {
+        // Ignore non-http(s) URL protocols cleanly.
+      }
     });
   }
 
@@ -471,16 +515,16 @@ function initApp(): void {
       const weekBtn = target?.closest<HTMLElement>('[data-switcher-week]');
       if (weekBtn) {
         const weekNum = Number(weekBtn.getAttribute('data-switcher-week'));
-        if (weekNum >= 1 && weekNum <= 12) {
+        if (Number.isInteger(weekNum) && weekNum >= 1 && weekNum <= 12) {
           setActiveWeekPill(weekNum);
+          const row =
+            dialog.querySelector<HTMLElement>(`[data-week-row="${weekNum}"]`) ??
+            dialog.querySelector<HTMLElement>(`#qs-week-${weekNum}`);
+          row?.scrollIntoView({
+            behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+            block: 'start',
+          });
         }
-        const row =
-          dialog.querySelector<HTMLElement>(`[data-week-row="${weekNum}"]`) ??
-          dialog.querySelector<HTMLElement>(`#qs-week-${weekNum}`);
-        row?.scrollIntoView({
-          behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-          block: 'start',
-        });
       }
     });
 

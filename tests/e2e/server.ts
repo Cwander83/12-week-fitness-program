@@ -44,12 +44,31 @@ function resolveHeaders(pathname: string): Record<string, string> {
   return result;
 }
 
-function resolveDistFile(urlPathname: string): string | null {
-  const decoded = decodeURIComponent(urlPathname);
-  const safePath = path.normalize(decoded).replace(/^(\.\.[/\\])+/, '');
-  const candidate = path.join(DIST_DIR, safePath);
+export function resolveDistFile(urlPathname: string): string | null {
+  if (urlPathname.includes('\0')) {
+    return null;
+  }
 
-  if (!candidate.startsWith(DIST_DIR)) {
+  let decoded: string;
+  try {
+    decoded = decodeURIComponent(urlPathname);
+  } catch {
+    return null;
+  }
+
+  if (decoded.includes('\0')) {
+    return null;
+  }
+
+  const normalized = decoded.replace(/\\/g, '/');
+  if (normalized.split('/').includes('..')) {
+    return null;
+  }
+
+  const relativePath = normalized.replace(/^\/+/, '');
+  const candidate = path.resolve(DIST_DIR, relativePath);
+
+  if (candidate !== DIST_DIR && !candidate.startsWith(DIST_DIR + path.sep)) {
     return null;
   }
 
@@ -63,9 +82,11 @@ function resolveDistFile(urlPathname: string): string | null {
     return indexCandidate;
   }
 
-  const htmlCandidate = `${candidate}.html`;
-  if (existsSync(htmlCandidate) && statSync(htmlCandidate).isFile()) {
-    return htmlCandidate;
+  if (candidate !== DIST_DIR) {
+    const htmlCandidate = `${candidate}.html`;
+    if (existsSync(htmlCandidate) && statSync(htmlCandidate).isFile()) {
+      return htmlCandidate;
+    }
   }
 
   return null;

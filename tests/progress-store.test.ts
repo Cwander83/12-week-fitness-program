@@ -106,9 +106,12 @@ describe('progress-store', () => {
     storage.setItem(STORAGE_KEY, '{corrupt');
     expect(readCompletedDays(storage)).toEqual([]);
 
-    const url = buildBackupUrl('https://trainer.example/day/54?foo=bar', [1, 54]);
+    const url = buildBackupUrl('https://user:secret@trainer.example/day/54?foo=bar#section', [1, 54]);
     const parsed = new URL(url);
-    expect(parsed.searchParams.get('foo')).toBe('bar');
+    expect(parsed.username).toBe('');
+    expect(parsed.password).toBe('');
+    expect(parsed.hash).toBe('');
+    expect(parsed.searchParams.get('foo')).toBeNull();
     expect(decodeProgressToken(parsed.searchParams.get('p'))).toEqual([1, 54]);
 
     clearCompletedDays(storage);
