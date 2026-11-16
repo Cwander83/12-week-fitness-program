@@ -1,0 +1,135 @@
+{
+  "id": "day-29",
+  "dayNumber": 29,
+  "weekNumber": 5,
+  "phaseNumber": 2,
+  "title": "Triceps / Calves / Abs",
+  "shortSplit": "Tri/Ab",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "triceps",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "V-Handle Cable Extensions",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "15",
+          "rawText": "3 triple drop sets of 15 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Close Grip Bench Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "12",
+          "rawText": "3 triple drop sets of 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Triceps Overhead Rope Extensions",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "10",
+          "rawText": "3 triple drop sets of 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Calf Raises",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 7,
+          "reps": "20",
+          "rawText": "7 sets of 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Weighted Sit-Ups",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hanging Leg Raises",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "15–17",
+          "rawText": "2 sets of 15–17 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "day-12",
+  "dayNumber": 12,
+  "weekNumber": 2,
+  "phaseNumber": 1,
+  "title": "Back / Biceps",
+  "shortSplit": "Bk/Bi",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "back",
+    "biceps"
+  ],
+  "secondaryMuscles": [
+    "glutes",
+    "hamstrings"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Grip Pulldown",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "8–10",
+          "rawText": "3 sets to failure in 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Wide Grip Lat Pulldown",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "8–12",
+          "rawText": "3 sets to failure in 8–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "One Arm Dumbbell Row",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "8–12",
+          "rawText": "3 sets to failure in 8–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Romanian Deadlift",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "16",
+          "rawText": "3 sets to failure in 16 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hammer Dumbbell Curl",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "18–20",
+          "rawText": "3 sets to failure in 18–20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Preacher Machine Curl",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "14–16",
+          "rawText": "3 sets to failure in 14–16 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "E-Z Bar Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "8–10",
+          "rawText": "3 sets to failure in 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

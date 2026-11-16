@@ -1,0 +1,167 @@
+{
+  "id": "day-51",
+  "dayNumber": 51,
+  "weekNumber": 8,
+  "phaseNumber": 2,
+  "title": "Shoulders / Calves / Abs",
+  "shortSplit": "Sh/Clv",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Side Raises",
+      "prescriptions": [
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "50",
+          "rawText": "1 set of 50 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "40",
+          "rawText": "1 set of 40 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "30",
+          "rawText": "1 set of 30 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "20",
+          "rawText": "1 set of 20 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "10",
+          "rawText": "1 set of 10 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "drop",
+          "sets": 5,
+          "reps": "10",
+          "rawText": "Drop Set: 5 sets of 10 reps",
+          "notes": "Drop Set"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Machine Hammer Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 1,
+          "reps": "6–10",
+          "rawText": "1 triple drop set of 6–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Barbell Shrug",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "8–12",
+          "rawText": "2 sets of 8–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Seated Calf Raise",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Machine Calf Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Sit Ups With Legs On a Bench",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "30",
+          "rawText": "3 sets of 30 reps (10 full reps, 10 bottom half-reps, 10 top half-reps)",
+          "notes": "10 full reps, 10 bottom half-reps, 10 top half-reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

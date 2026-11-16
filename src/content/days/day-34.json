@@ -1,0 +1,155 @@
+{
+  "id": "day-34",
+  "dayNumber": 34,
+  "weekNumber": 5,
+  "phaseNumber": 2,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings",
+    "calves"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Single Leg Hamstring Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 4,
+          "reps": "10, 10",
+          "rawText": "4 drop sets of 10, 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Stiff-Legged Deadlift",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "16–18",
+          "rawText": "2 sets of 16–18 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "20",
+          "rawText": "2 sets of 20 reps to failure",
+          "notes": "to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Extensions",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "20, 20, 20",
+          "rawText": "3 triple drop sets of 20, 20, 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Seated Hamstring Curls",
+          "prescriptions": [
+            {
+              "kind": "warmup",
+              "sets": 1,
+              "reps": "8–10",
+              "rawText": "1 warm-up set of 8–10 reps"
+            },
+            {
+              "kind": "drop",
+              "sets": 3,
+              "reps": "16, 16",
+              "rawText": "3 drop sets of 16, 16 reps"
+            }
+          ]
+        },
+        {
+          "name": "Standing Calf Press",
+          "prescriptions": [
+            {
+              "kind": "warmup",
+              "sets": 1,
+              "reps": "8–10",
+              "rawText": "1 warm-up set of 8–10 reps"
+            },
+            {
+              "kind": "drop",
+              "sets": 3,
+              "reps": "20, 20",
+              "rawText": "3 drop sets of 20, 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

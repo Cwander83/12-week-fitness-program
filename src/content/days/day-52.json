@@ -1,0 +1,131 @@
+{
+  "id": "day-52",
+  "dayNumber": 52,
+  "weekNumber": 8,
+  "phaseNumber": 2,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Seated Hamstring Curl",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "20",
+              "rawText": "1 set of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Leg Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "40",
+              "rawText": "1 set of 40 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Squats",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "40",
+          "rawText": "1 set of 40 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "30",
+          "rawText": "1 set of 30 reps",
+          "notes": "Pyramid Set"
+        },
+        {
+          "kind": "pyramid-step",
+          "sets": 1,
+          "reps": "10",
+          "rawText": "1 set of 10 reps",
+          "notes": "Pyramid Set"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Leg Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "20",
+              "rawText": "2 sets of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Seated Hamstring Curl",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "20",
+              "rawText": "2 sets of 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

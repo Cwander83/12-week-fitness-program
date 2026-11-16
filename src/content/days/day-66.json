@@ -1,0 +1,79 @@
+{
+  "id": "day-66",
+  "dayNumber": 66,
+  "weekNumber": 10,
+  "phaseNumber": 3,
+  "title": "Chest / Back",
+  "shortSplit": "DTP C/B",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "back"
+  ],
+  "secondaryMuscles": [
+    "shoulders",
+    "triceps",
+    "biceps"
+  ],
+  "hasDtp": true,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "dtp-superset",
+      "label": "DTP Superset",
+      "exercises": [
+        {
+          "name": "Dumbbell Chest Press",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        },
+        {
+          "name": "Bent-Over Rows",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

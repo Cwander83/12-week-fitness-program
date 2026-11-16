@@ -1,0 +1,394 @@
+---
+import type { MuscleGroup } from '../../types/workout';
+
+export interface Props {
+  primaryMuscles: MuscleGroup[];
+  secondaryMuscles?: MuscleGroup[];
+  splitLabel: string;
+  compact?: boolean;
+}
+
+const {
+  primaryMuscles,
+  secondaryMuscles = [],
+  splitLabel,
+  compact = false,
+} = Astro.props;
+
+const primarySet = new Set<MuscleGroup>(primaryMuscles);
+const secondarySet = new Set<MuscleGroup>(
+  secondaryMuscles.filter((m) => !primarySet.has(m))
+);
+
+const fillFor = (m: MuscleGroup): string =>
+  primarySet.has(m)
+    ? 'var(--vermilion)'
+    : secondarySet.has(m)
+      ? 'var(--muscle-secondary)'
+      : 'var(--muscle-idle)';
+
+const strokeFor = (m: MuscleGroup): string =>
+  primarySet.has(m)
+    ? 'var(--ink)'
+    : secondarySet.has(m)
+      ? 'var(--muscle-secondary-stroke)'
+      : 'var(--control-border)';
+
+const swFor = (m: MuscleGroup): string =>
+  primarySet.has(m) ? '1.4' : secondarySet.has(m) ? '1.2' : '1';
+
+const formatMuscleName = (m: MuscleGroup): string => {
+  const names: Record<MuscleGroup, string> = {
+    quads: 'Quadriceps',
+    hamstrings: 'Hamstrings',
+    glutes: 'Glutes',
+    calves: 'Calves',
+    chest: 'Chest',
+    back: 'Back',
+    shoulders: 'Shoulders',
+    biceps: 'Biceps',
+    triceps: 'Triceps',
+    abs: 'Abdominals',
+  };
+  return names[m];
+};
+
+const primarySummary =
+  primaryMuscles.length > 0
+    ? primaryMuscles.map(formatMuscleName).join(', ')
+    : 'Recovery';
+const secondarySummary =
+  secondarySet.size > 0
+    ? `; secondary: ${[...secondarySet].map(formatMuscleName).join(', ')}`
+    : '';
+const accessibleTitle = `Anatomical muscle map for ${splitLabel} — primary: ${primarySummary}${secondarySummary}`;
+
+const svgClass = compact ? 'anatomy-svg anatomy-svg--compact' : 'anatomy-svg';
+---
+
+<svg
+  viewBox="-26 0 472 256"
+  class={svgClass}
+  role="img"
+  aria-label={accessibleTitle}
+>
+  <title>{accessibleTitle}</title>
+
+  <line
+    x1="210"
+    y1="12"
+    x2="210"
+    y2="234"
+    stroke="var(--rule)"
+    stroke-width="1"
+    stroke-dasharray="3 3"
+  />
+
+  {/* Front Figure */}
+  <g>
+    <ellipse
+      cx="105"
+      cy="24"
+      rx="10.5"
+      ry="13"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M98,36 L96,46 L82,52 L128,52 L114,46 L112,36 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M82,52 C70,55 66,64 68,76 L79,78 L84,59 Z"
+      fill={fillFor('shoulders')}
+      stroke={strokeFor('shoulders')}
+      stroke-width={swFor('shoulders')}
+    />
+    <path
+      d="M128,52 C140,55 144,64 142,76 L131,78 L126,59 Z"
+      fill={fillFor('shoulders')}
+      stroke={strokeFor('shoulders')}
+      stroke-width={swFor('shoulders')}
+    />
+    <path
+      d="M104,52 L84,54 L79,68 L88,78 L104,76 Z"
+      fill={fillFor('chest')}
+      stroke={strokeFor('chest')}
+      stroke-width={swFor('chest')}
+    />
+    <path
+      d="M106,52 L126,54 L131,68 L122,78 L106,76 Z"
+      fill={fillFor('chest')}
+      stroke={strokeFor('chest')}
+      stroke-width={swFor('chest')}
+    />
+    <path
+      d="M68,77 C61,88 61,100 65,110 L75,108 C78,97 79,86 78,79 Z"
+      fill={fillFor('biceps')}
+      stroke={strokeFor('biceps')}
+      stroke-width={swFor('biceps')}
+    />
+    <path
+      d="M142,77 C149,88 149,100 145,110 L135,108 C132,97 131,86 132,79 Z"
+      fill={fillFor('biceps')}
+      stroke={strokeFor('biceps')}
+      stroke-width={swFor('biceps')}
+    />
+    <path
+      d="M65,111 L57,132 L61,146 L68,144 L75,110 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M145,111 L153,132 L149,146 L142,144 L135,110 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M84,79 L126,79 L122,126 L88,126 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M95,82 L115,82 L113,122 L97,122 Z"
+      fill={fillFor('abs')}
+      stroke={strokeFor('abs')}
+      stroke-width={swFor('abs')}
+    />
+    <line x1="105" y1="82" x2="105" y2="122" stroke={strokeFor('abs')} stroke-width="0.9" />
+    <line x1="96" y1="92" x2="114" y2="92" stroke={strokeFor('abs')} stroke-width="0.9" />
+    <line x1="96" y1="102" x2="114" y2="102" stroke={strokeFor('abs')} stroke-width="0.9" />
+    <line x1="97" y1="112" x2="113" y2="112" stroke={strokeFor('abs')} stroke-width="0.9" />
+    <path
+      d="M86,127 C78,144 76,162 82,182 L96,181 C100,164 103,144 103,128 Z"
+      fill={fillFor('quads')}
+      stroke={strokeFor('quads')}
+      stroke-width={swFor('quads')}
+    />
+    <path
+      d="M124,127 C132,144 134,162 128,182 L114,181 C110,164 107,144 107,128 Z"
+      fill={fillFor('quads')}
+      stroke={strokeFor('quads')}
+      stroke-width={swFor('quads')}
+    />
+    <path d="M89,136 C86,154 88,168 91,176" fill="none" stroke={strokeFor('quads')} stroke-width="0.9" opacity="0.7" />
+    <path d="M121,136 C124,154 122,168 119,176" fill="none" stroke={strokeFor('quads')} stroke-width="0.9" opacity="0.7" />
+    <path
+      d="M83,184 L80,208 L85,230 L93,230 L96,204 L95,184 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M127,184 L130,208 L125,230 L117,230 L114,204 L115,184 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+  </g>
+
+  {/* Rear Figure */}
+  <g>
+    <ellipse
+      cx="315"
+      cy="24"
+      rx="10.5"
+      ry="13"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M308,37 L292,52 L315,78 L338,52 L322,37 Z"
+      fill={fillFor('back')}
+      stroke={strokeFor('back')}
+      stroke-width={swFor('back')}
+    />
+    <path
+      d="M292,52 C280,55 276,64 278,76 L289,78 L294,59 Z"
+      fill={fillFor('shoulders')}
+      stroke={strokeFor('shoulders')}
+      stroke-width={swFor('shoulders')}
+    />
+    <path
+      d="M338,52 C350,55 354,64 352,76 L341,78 L336,59 Z"
+      fill={fillFor('shoulders')}
+      stroke={strokeFor('shoulders')}
+      stroke-width={swFor('shoulders')}
+    />
+    <path
+      d="M293,60 L289,82 L297,114 L314,116 L314,76 Z"
+      fill={fillFor('back')}
+      stroke={strokeFor('back')}
+      stroke-width={swFor('back')}
+    />
+    <path
+      d="M337,60 L341,82 L333,114 L316,116 L316,76 Z"
+      fill={fillFor('back')}
+      stroke={strokeFor('back')}
+      stroke-width={swFor('back')}
+    />
+    <path
+      d="M278,77 C271,88 271,100 275,110 L285,108 C288,97 289,86 288,79 Z"
+      fill={fillFor('triceps')}
+      stroke={strokeFor('triceps')}
+      stroke-width={swFor('triceps')}
+    />
+    <path
+      d="M352,77 C359,88 359,100 355,110 L345,108 C342,97 341,86 342,79 Z"
+      fill={fillFor('triceps')}
+      stroke={strokeFor('triceps')}
+      stroke-width={swFor('triceps')}
+    />
+    <path
+      d="M275,111 L267,132 L271,146 L278,144 L285,110 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M355,111 L363,132 L359,146 L352,144 L345,110 Z"
+      fill="var(--muscle-idle)"
+      stroke="var(--control-border)"
+      stroke-width="1"
+    />
+    <path
+      d="M296,117 L314,117 L314,142 C304,144 294,140 293,128 Z"
+      fill={fillFor('glutes')}
+      stroke={strokeFor('glutes')}
+      stroke-width={swFor('glutes')}
+    />
+    <path
+      d="M334,117 L316,117 L316,142 C326,144 336,140 337,128 Z"
+      fill={fillFor('glutes')}
+      stroke={strokeFor('glutes')}
+      stroke-width={swFor('glutes')}
+    />
+    <path
+      d="M293,142 C288,156 289,170 294,182 L307,181 C310,168 312,154 312,143 Z"
+      fill={fillFor('hamstrings')}
+      stroke={strokeFor('hamstrings')}
+      stroke-width={swFor('hamstrings')}
+    />
+    <path
+      d="M337,142 C342,156 341,170 336,182 L323,181 C320,168 318,154 318,143 Z"
+      fill={fillFor('hamstrings')}
+      stroke={strokeFor('hamstrings')}
+      stroke-width={swFor('hamstrings')}
+    />
+    <path
+      d="M293,185 C287,198 288,210 294,226 L302,226 C306,210 307,196 305,185 Z"
+      fill={fillFor('calves')}
+      stroke={strokeFor('calves')}
+      stroke-width={swFor('calves')}
+    />
+    <path
+      d="M337,185 C343,198 342,210 336,226 L328,226 C324,210 323,196 325,185 Z"
+      fill={fillFor('calves')}
+      stroke={strokeFor('calves')}
+      stroke-width={swFor('calves')}
+    />
+  </g>
+
+  {/* Primary Target Callouts */}
+  {primarySet.has('shoulders') && (
+    <g aria-hidden="true">
+      <line x1="72" y1="58" x2="36" y2="58" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="72" cy="58" r="2.5" fill="var(--vermilion)" />
+      <text x="-20" y="54" font-size="11" font-weight="700" fill="var(--vermilion-text)">SHOULDERS</text>
+    </g>
+  )}
+  {primarySet.has('chest') && (
+    <g aria-hidden="true">
+      <line x1="88" y1="66" x2="32" y2="66" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="88" cy="66" r="2.5" fill="var(--vermilion)" />
+      <text x="-14" y="62" font-size="11" font-weight="700" fill="var(--vermilion-text)">CHEST</text>
+    </g>
+  )}
+  {primarySet.has('biceps') && (
+    <g aria-hidden="true">
+      <line x1="65" y1="94" x2="28" y2="94" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="65" cy="94" r="2.5" fill="var(--vermilion)" />
+      <text x="-14" y="90" font-size="11" font-weight="700" fill="var(--vermilion-text)">BICEPS</text>
+    </g>
+  )}
+  {primarySet.has('abs') && (
+    <g aria-hidden="true">
+      <line x1="97" y1="112" x2="28" y2="112" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="97" cy="112" r="2.5" fill="var(--vermilion)" />
+      <text x="-6" y="108" font-size="11" font-weight="700" fill="var(--vermilion-text)">ABS</text>
+    </g>
+  )}
+  {primarySet.has('quads') && (
+    <g aria-hidden="true">
+      <line x1="82" y1="154" x2="28" y2="154" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="82" cy="154" r="2.5" fill="var(--vermilion)" />
+      <text x="-12" y="150" font-size="11" font-weight="700" fill="var(--vermilion-text)">QUADS</text>
+    </g>
+  )}
+
+  {primarySet.has('back') && (
+    <g aria-hidden="true">
+      <line x1="336" y1="72" x2="394" y2="72" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="336" cy="72" r="2.5" fill="var(--vermilion)" />
+      <text x="366" y="68" font-size="11" font-weight="700" fill="var(--vermilion-text)">BACK</text>
+    </g>
+  )}
+  {primarySet.has('triceps') && (
+    <g aria-hidden="true">
+      <line x1="354" y1="96" x2="394" y2="96" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="354" cy="96" r="2.5" fill="var(--vermilion)" />
+      <text x="364" y="92" font-size="11" font-weight="700" fill="var(--vermilion-text)">TRICEPS</text>
+    </g>
+  )}
+  {primarySet.has('glutes') && (
+    <g aria-hidden="true">
+      <line x1="334" y1="130" x2="394" y2="130" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="334" cy="130" r="2.5" fill="var(--vermilion)" />
+      <text x="364" y="126" font-size="11" font-weight="700" fill="var(--vermilion-text)">GLUTES</text>
+    </g>
+  )}
+  {primarySet.has('hamstrings') && (
+    <g aria-hidden="true">
+      <line x1="337" y1="162" x2="394" y2="162" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="337" cy="162" r="2.5" fill="var(--vermilion)" />
+      <text x="364" y="158" font-size="11" font-weight="700" fill="var(--vermilion-text)">HAMS</text>
+    </g>
+  )}
+  {primarySet.has('calves') && (
+    <g aria-hidden="true">
+      <line x1="339" y1="205" x2="394" y2="205" stroke="var(--vermilion)" stroke-width="1.2" />
+      <circle cx="339" cy="205" r="2.5" fill="var(--vermilion)" />
+      <text x="364" y="201" font-size="11" font-weight="700" fill="var(--vermilion-text)">CALVES</text>
+    </g>
+  )}
+
+  <text
+    x="105"
+    y="250"
+    text-anchor="middle"
+    font-size="11"
+    font-weight="700"
+    letter-spacing="1.6"
+    fill="var(--muted)"
+  >
+    FRONT
+  </text>
+  <text
+    x="315"
+    y="250"
+    text-anchor="middle"
+    font-size="11"
+    font-weight="700"
+    letter-spacing="1.6"
+    fill="var(--muted)"
+  >
+    REAR
+  </text>
+</svg>

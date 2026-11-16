@@ -1,0 +1,165 @@
+{
+  "id": "day-15",
+  "dayNumber": 15,
+  "weekNumber": 3,
+  "phaseNumber": 1,
+  "title": "Chest / Triceps",
+  "shortSplit": "Ch/Tri",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "shoulders"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "150 reps per side",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 150 reps per side"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Flat Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "6–8",
+          "rawText": "2 sets to failure in 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Straight Arm Pullovers",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Flyes",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Overhead Tricep Extensions",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 1,
+          "reps": "12–15",
+          "rawText": "1 set to failure in 12–15 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 2,
+          "reps": "to failure",
+          "rawText": "2 drop sets to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Dips",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets to failure in 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Lying Dumbbell Extensions",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets to failure in 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Narrow Pushups",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "to failure",
+              "rawText": "3 sets to failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Bench Dips",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets to failure in 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "150 reps per side",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 150 reps per side"
+      ]
+    }
+  ]
+}

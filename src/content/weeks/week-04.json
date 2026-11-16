@@ -1,0 +1,67 @@
+{
+  "id": "week-04",
+  "weekNumber": 4,
+  "phaseNumber": 1,
+  "phaseTitle": "Hypertrophy Foundation",
+  "weekTheme": "Triple Drop Week",
+  "startDay": 22,
+  "endDay": 28,
+  "workoutDaysCount": 4,
+  "restDaysCount": 3,
+  "cardioSummary": "20 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 22,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 23,
+      "title": "Back / Biceps",
+      "shortSplit": "Bk/Bi",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 24,
+      "title": "Shoulders",
+      "shortSplit": "Shld",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 25,
+      "title": "Chest",
+      "shortSplit": "Chest",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 26,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 27,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 28,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

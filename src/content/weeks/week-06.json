@@ -1,0 +1,67 @@
+{
+  "id": "week-06",
+  "weekNumber": 6,
+  "phaseNumber": 2,
+  "phaseTitle": "High-Density Supersets",
+  "weekTheme": "Antagonistic & Alternating Supersets",
+  "startDay": 36,
+  "endDay": 42,
+  "workoutDaysCount": 4,
+  "restDaysCount": 3,
+  "cardioSummary": "25 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 36,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 37,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 38,
+      "title": "Shoulders / Calves",
+      "shortSplit": "Sh/Clv",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 39,
+      "title": "Chest / Triceps / Abs",
+      "shortSplit": "Ch/Tri",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 40,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 41,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 42,
+      "title": "Back / Biceps",
+      "shortSplit": "Bk/Bi",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

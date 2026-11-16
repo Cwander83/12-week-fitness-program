@@ -1,0 +1,78 @@
+---
+export interface Props {
+  repWave: number[];
+  label?: string;
+}
+
+const { repWave, label } = Astro.props;
+
+const barCount = repWave.length;
+const isHalf = barCount === 5;
+const peakIndices = repWave
+  .map((reps, idx) => (reps === 10 ? String(idx + 1).padStart(2, '0') : null))
+  .filter((v): v is string => v !== null);
+
+const waveTitle = label ?? (isHalf ? '5-Bar 1/2 DTP Rep Pyramid' : `${barCount}-Bar DTP Rep Pyramid`);
+const waveCode = repWave.join('–');
+
+const peakReadout =
+  peakIndices.length > 1
+    ? `Sets ${peakIndices[0]}–${peakIndices[peakIndices.length - 1]} (10 reps)`
+    : peakIndices.length === 1
+      ? `Set ${peakIndices[0]} (10 reps)`
+      : 'Progressive Wave';
+
+const isAscending = barCount > 1 && repWave[0] < repWave[barCount - 1];
+const isDescending = barCount > 1 && repWave[0] > repWave[barCount - 1];
+const cadenceLabel =
+  barCount === 10
+    ? '10-set wave'
+    : isDescending
+      ? `${barCount} sets down`
+      : isAscending
+        ? `${barCount} sets up`
+        : `${barCount} sets`;
+
+const barClassFor = (reps: number): string => {
+  if (reps === 50 || reps === 40 || reps === 30 || reps === 20 || reps === 10) {
+    return `dtp-bar dtp-bar--${reps}`;
+  }
+  return 'dtp-bar dtp-bar--30';
+};
+---
+
+{barCount > 0 && (
+  <div class="dtp-panel">
+    <div class="dtp-head">
+      <strong class="dtp-title">{waveTitle}</strong>
+      <span class="dtp-wave-label tabular">{waveCode}</span>
+    </div>
+
+    <div
+      class={isHalf ? 'dtp-bars dtp-bars--5 tabular' : 'dtp-bars tabular'}
+      role="img"
+      aria-label={`${barCount}-bar DTP pyramid wave: ${repWave.join(', ')} reps`}
+    >
+      {repWave.map((reps) => (
+        <div class="dtp-col">
+          <span class={reps === 10 ? 'dtp-val dtp-val--peak' : 'dtp-val'}>{reps}</span>
+          <span class={barClassFor(reps)}></span>
+        </div>
+      ))}
+    </div>
+
+    <div
+      class={isHalf ? 'dtp-indices dtp-indices--5 tabular' : 'dtp-indices tabular'}
+      aria-hidden="true"
+    >
+      {repWave.map((_, idx) => (
+        <span class="dtp-idx">{String(idx + 1).padStart(2, '0')}</span>
+      ))}
+    </div>
+
+    <div class="dtp-caption tabular">
+      <span><strong>Peak Weight:</strong>{' '}{peakReadout}</span>
+      <span class="dtp-cadence">{cadenceLabel}</span>
+    </div>
+  </div>
+)}

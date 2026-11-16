@@ -1,0 +1,89 @@
+{
+  "id": "day-28",
+  "dayNumber": 28,
+  "weekNumber": 4,
+  "phaseNumber": 1,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Leg Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "85",
+              "rawText": "3 sets of 85 reps",
+              "notes": "20 reps with feet at bottom of plate · 20 reps after moving feet 1 inch up · 20 reps after moving feet 1 inch up · 25 reps after moving feet to top of plate"
+            }
+          ]
+        },
+        {
+          "name": "Squats",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "20",
+              "rawText": "3 sets of 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Extensions",
+      "prescriptions": [
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 triple drop sets of 12–15 reps"
+        },
+        {
+          "kind": "burnout",
+          "sets": 1,
+          "reps": "partial reps",
+          "rawText": "1 burnout set with partial reps",
+          "notes": "with partial reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

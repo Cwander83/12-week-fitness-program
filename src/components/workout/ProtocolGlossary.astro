@@ -1,0 +1,105 @@
+---
+const protocols = [
+  {
+    name: 'DTP (Dramatic Transformation Principle)',
+    badge: '50–10–50 Wave',
+    badgeClass: 'badge-dtp',
+    open: true,
+    description:
+      'Ten consecutive sets following the 50 · 40 · 30 · 20 · 10 · 10 · 20 · 30 · 40 · 50 rep cadence. Increase resistance as target reps step down from 50 to 10, then strip weight on the ascending half back to 50.',
+  },
+  {
+    name: 'Triple Drop Set',
+    badge: '12, 12, 12',
+    badgeClass: 'badge-drop',
+    open: false,
+    description:
+      'Complete the prescribed rep count to failure, strip resistance immediately without resting, push to failure again, and repeat through a third drop. Featured prominently across Week 4.',
+  },
+  {
+    name: 'Rest-Pause',
+    badge: 'Pause & Failure',
+    badgeClass: 'badge-drop',
+    open: false,
+    description:
+      'Perform a set to failure, pause briefly to clear local fatigue while keeping the load set, then resume for additional failure reps until the prescribed total or drop target is met.',
+  },
+  {
+    name: 'Giant Set',
+    badge: '3-Way Round',
+    badgeClass: 'badge-cobalt',
+    open: false,
+    description:
+      'Execute three movements consecutively with minimal transition before resting—such as Head Smackers, Skull Crushers, and Rockers on Day 8, or Chins, Behind-The-Neck Pulldowns, and Cable Rows on Day 35.',
+  },
+  {
+    name: '21s',
+    badge: '7, 7, 7',
+    badgeClass: 'badge-warmup',
+    open: false,
+    description:
+      'Seven bottom-half partial repetitions immediately followed by seven top-half partial repetitions and seven full-range repetitions for a continuous 21-rep set.',
+  },
+  {
+    name: 'One-and-a-Half Reps',
+    badge: '1.5 Cadence',
+    badgeClass: 'badge-warmup',
+    open: false,
+    description:
+      'Perform one full repetition immediately followed by a half repetition in the peak tension zone to count as one combined rep—applied across Phase II Leg Extensions and Cable Pullovers.',
+  },
+] as const;
+---
+
+<section class="glossary-section reveal-on-scroll" aria-labelledby="glossary-heading">
+  <div class="section-head">
+    <h2 id="glossary-heading" class="display-face">Training Protocol Glossary</h2>
+    <span class="section-meta">Expandable Reference</span>
+  </div>
+
+  <div class="glossary-list">
+    {protocols.map((p) => (
+      <details class="protocol-item" open={p.open}>
+        <summary>
+          <span class="summary-left">
+            <svg class="summary-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+            <span>{p.name}</span>
+          </span>
+          <span class={`badge ${p.badgeClass} tabular`}>{p.badge}</span>
+        </summary>
+        <div class="protocol-body">
+          <p>{p.description}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .glossary-section {
+      margin-block-end: 1.5rem;
+    }
+
+    .glossary-list {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .glossary-list .protocol-item:last-child {
+      border-bottom: 0;
+    }
+
+    .protocol-body {
+      padding: 0 0 1rem 1.5rem;
+    }
+
+    .protocol-body p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+      max-inline-size: 68ch;
+    }
+  }
+</style>

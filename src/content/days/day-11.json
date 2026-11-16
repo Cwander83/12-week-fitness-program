@@ -1,0 +1,76 @@
+{
+  "id": "day-11",
+  "dayNumber": 11,
+  "weekNumber": 2,
+  "phaseNumber": 1,
+  "title": "Calves / Abs",
+  "shortSplit": "Clv/Ab",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Calf Raises",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "reps": "8–10",
+          "rawText": "1–2 warm-up sets of 8–10 reps",
+          "notes": "1–2 sets"
+        },
+        {
+          "kind": "failure",
+          "sets": 4,
+          "reps": "12",
+          "rawText": "4 sets to failure in 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Donkey Calf Raises",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 4,
+          "reps": "18–20",
+          "rawText": "4 sets to failure in 18–20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hanging Leg Raises",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "20",
+          "rawText": "3 sets to failure in 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

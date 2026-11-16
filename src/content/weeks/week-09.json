@@ -1,0 +1,66 @@
+{
+  "id": "week-09",
+  "weekNumber": 9,
+  "phaseNumber": 3,
+  "phaseTitle": "Peak DTP Shock",
+  "weekTheme": "Smith DTP & 4-Superset Push/Pull",
+  "startDay": 57,
+  "endDay": 63,
+  "workoutDaysCount": 5,
+  "restDaysCount": 2,
+  "cardioSummary": "25 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 57,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 58,
+      "title": "Shoulders / Calves / Abs",
+      "shortSplit": "DTP Sh",
+      "isRestDay": false,
+      "hasDtp": true
+    },
+    {
+      "dayNumber": 59,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 60,
+      "title": "Chest / Back",
+      "shortSplit": "Ch/Bk",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 61,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 62,
+      "title": "Biceps / Triceps",
+      "shortSplit": "Bi/Tri",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 63,
+      "title": "Shoulders / Calves / Abs",
+      "shortSplit": "Sh/Clv",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

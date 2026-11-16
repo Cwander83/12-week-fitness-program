@@ -1,0 +1,66 @@
+{
+  "id": "week-05",
+  "weekNumber": 5,
+  "phaseNumber": 2,
+  "phaseTitle": "High-Density Supersets",
+  "weekTheme": "Drop-Set Supersets & 25m Cardio",
+  "startDay": 29,
+  "endDay": 35,
+  "workoutDaysCount": 5,
+  "restDaysCount": 2,
+  "cardioSummary": "20–25 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 29,
+      "title": "Triceps / Calves / Abs",
+      "shortSplit": "Tri/Ab",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 30,
+      "title": "Rest (Cardio AM/PM)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 31,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 32,
+      "title": "Shoulders",
+      "shortSplit": "Shld",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 33,
+      "title": "Chest / Triceps",
+      "shortSplit": "Ch/Tri",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 34,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 35,
+      "title": "Back / Biceps / Abs",
+      "shortSplit": "Bk/Bi",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

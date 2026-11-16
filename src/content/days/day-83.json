@@ -1,0 +1,75 @@
+{
+  "id": "day-83",
+  "dayNumber": 83,
+  "weekNumber": 12,
+  "phaseNumber": 3,
+  "title": "Biceps / Triceps",
+  "shortSplit": "DTP Arm",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "biceps",
+    "triceps"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": true,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "dtp-superset",
+      "label": "DTP Superset",
+      "exercises": [
+        {
+          "name": "Triceps Pushdown With V-Bar",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        },
+        {
+          "name": "Standing Cable Curls",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

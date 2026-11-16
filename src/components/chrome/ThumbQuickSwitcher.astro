@@ -1,0 +1,243 @@
+---
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  currentWeek?: number;
+  currentDay?: number;
+}
+
+const { currentWeek, currentDay } = Astro.props;
+
+const weekEntries = (await getCollection('weeks')).sort(
+  (a, b) => a.data.weekNumber - b.data.weekNumber
+);
+const dayEntries = (await getCollection('days')).sort(
+  (a, b) => a.data.dayNumber - b.data.dayNumber
+);
+
+const daysByWeek = new Map<number, typeof dayEntries>();
+for (const entry of dayEntries) {
+  const list = daysByWeek.get(entry.data.weekNumber) ?? [];
+  list.push(entry);
+  daysByWeek.set(entry.data.weekNumber, list);
+}
+
+const activeWeek = currentWeek ?? (currentDay ? Math.ceil(currentDay / 7) : 1);
+---
+
+<dialog id="quick-switcher" class="switcher-dialog" aria-labelledby="qs-title">
+  <div class="dlg-head">
+    <div>
+      <h2 id="qs-title" class="dlg-title">Week &amp; Day Quick-Switcher</h2>
+      <div class="dlg-subtitle tabular">84 Daily Sheets · Select Week or Day</div>
+    </div>
+    <button
+      type="button"
+      class="icon-hit"
+      data-switcher-close
+      aria-label="Close Quick-Switcher"
+    >
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="dlg-pinned">
+    <div class="dlg-actions">
+      <div class="dlg-actions-row">
+        <span
+          class="tabular dlg-progress-text"
+          data-progress-summary
+          data-format="compact"
+        >
+          0 / 84 Completed
+        </span>
+        <a
+          href="/day/1"
+          class="btn-hit btn-primary tabular dlg-jump-btn"
+          data-switcher-jump-next
+        >
+          <span data-jump-next-label>Jump to Day 1</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="dlg-actions-row">
+        <button
+          type="button"
+          class="btn-hit btn-outline tabular dlg-util-btn"
+          data-copy-backup
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="1" />
+            <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+          </svg>
+          <span data-copy-backup-label>Copy Backup Link</span>
+        </button>
+        <button
+          type="button"
+          class="btn-hit btn-outline tabular dlg-util-btn"
+          data-reset-progress
+        >
+          <span data-reset-label>Reset</span>
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-hit btn-outline tabular dlg-install-btn"
+        data-install-app
+        hidden
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        <span data-install-label>Install App</span>
+      </button>
+      <span class="visually-hidden" role="status" data-install-status></span>
+    </div>
+
+    <div>
+      <div class="dlg-section-label">Weeks 1–12</div>
+      <div class="week-pills">
+        {weekEntries.map((w) => (
+          <button
+            type="button"
+            class="btn-hit btn-outline tabular week-pill-btn"
+            data-switcher-week={w.data.weekNumber}
+            data-active={w.data.weekNumber === activeWeek ? 'true' : undefined}
+          >
+            W{w.data.weekNumber}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="dlg-body">
+    <div class="dlg-section-label">Day 1–84 Grid</div>
+    {weekEntries.map((w) => {
+      const wDays = daysByWeek.get(w.data.weekNumber) ?? [];
+      return (
+        <div
+          id={`qs-week-${w.data.weekNumber}`}
+          class="switcher-week-row"
+          data-week-row={w.data.weekNumber}
+        >
+          <div class="switcher-week-head">
+            <a href={`/week/${w.data.weekNumber}`} class="switcher-week-title tabular">
+              Week {w.data.weekNumber} · {w.data.weekTheme}
+            </a>
+            <span
+              class="switcher-week-count tabular"
+              data-week-progress={w.data.weekNumber}
+              data-format="short"
+            >
+              0/7
+            </span>
+          </div>
+
+          <div class="switcher-days">
+            {wDays.map((entry) => {
+              const d = entry.data;
+              const kind = d.isRestDay ? 'rest' : d.hasDtp ? 'dtp' : 'train';
+              const isCurrent = d.dayNumber === currentDay;
+              return (
+                <a
+                  href={`/day/${d.dayNumber}`}
+                  class="matrix-cell"
+                  data-day-cell={d.dayNumber}
+                  data-kind={kind}
+                  data-state="pending"
+                  data-current={isCurrent ? 'true' : undefined}
+                  aria-current={isCurrent ? 'page' : undefined}
+                >
+                  <span class="cell-top tabular">
+                    <span class="cell-num">{d.dayNumber}</span>
+                    <span class="cell-icon cell-icon-check" aria-hidden="true">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span class="cell-icon cell-icon-next" aria-hidden="true">
+                      <svg
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </span>
+                  <span class="cell-split" data-day-cell-tag>{d.shortSplit}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</dialog>

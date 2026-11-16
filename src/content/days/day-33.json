@@ -1,0 +1,161 @@
+{
+  "id": "day-33",
+  "dayNumber": 33,
+  "weekNumber": 5,
+  "phaseNumber": 2,
+  "title": "Chest / Triceps",
+  "shortSplit": "Ch/Tri",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "shoulders"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Flat Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "warm-up",
+          "rawText": "2 warm-up sets"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "6–8",
+          "rawText": "3 sets of 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "warm-up",
+          "rawText": "2 warm-up sets"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "10",
+          "rawText": "2 sets of 10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 1,
+          "reps": "10, 10, 10",
+          "rawText": "1 triple drop set of 10, 10, 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Peck Deck Flyes",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "warm-up",
+          "rawText": "2 warm-up sets"
+        },
+        {
+          "kind": "drop",
+          "sets": 3,
+          "reps": "8, 8",
+          "rawText": "3 drop sets of 8, 8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Tricep Rope Pushdown",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "warm-up",
+          "rawText": "2 warm-up sets"
+        },
+        {
+          "kind": "drop",
+          "sets": 3,
+          "reps": "12, 12",
+          "rawText": "3 drop sets of 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Overhead Tricep Extensions",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "warm-up",
+          "rawText": "2 warm-up sets"
+        },
+        {
+          "kind": "drop",
+          "sets": 3,
+          "reps": "12, 12",
+          "rawText": "3 drop sets of 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Smith Machine Close Grip Bench Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "warm-up",
+          "rawText": "2 warm-up sets"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "12",
+          "rawText": "2 sets of 12 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 1,
+          "reps": "12",
+          "rawText": "1 set of 12 reps and partial reps until failure",
+          "notes": "and partial reps until failure"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

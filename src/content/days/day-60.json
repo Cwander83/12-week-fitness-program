@@ -1,0 +1,158 @@
+{
+  "id": "day-60",
+  "dayNumber": 60,
+  "weekNumber": 9,
+  "phaseNumber": 3,
+  "title": "Chest / Back",
+  "shortSplit": "Ch/Bk",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "back"
+  ],
+  "secondaryMuscles": [
+    "shoulders",
+    "triceps",
+    "biceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Machine Pullovers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Flat Dumbbell Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "6–8",
+              "rawText": "3 sets of 6–8 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Incline Flyes",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Bent Over Row",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Cable Crossovers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Single Arm Dumbbell Row",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Underhand Cable Pulldown",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Flat Dumbbell Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "6–8",
+              "rawText": "3 sets of 6–8 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

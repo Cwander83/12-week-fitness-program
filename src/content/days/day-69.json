@@ -1,0 +1,101 @@
+{
+  "id": "day-69",
+  "dayNumber": 69,
+  "weekNumber": 10,
+  "phaseNumber": 3,
+  "title": "Abs / Calves",
+  "shortSplit": "Ab/Clv",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "circuit",
+      "label": "Circuit",
+      "exercises": [
+        {
+          "name": "Standing Calf Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 4,
+              "reps": "20",
+              "rawText": "4 sets of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "45 Degree Calf Press Machine",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 4,
+              "reps": "20",
+              "rawText": "4 sets of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Hanging Leg Raises",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 4,
+              "reps": "20",
+              "rawText": "4 sets of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Incline Crunches",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 4,
+              "reps": "20",
+              "rawText": "4 sets of 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Twists",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 1,
+          "reps": "1 minute",
+          "rawText": "1 set of 1 minute"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

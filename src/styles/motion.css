@@ -1,0 +1,301 @@
+@layer components {
+  /* Scroll-Driven Top Progress Rail */
+  .scroll-rail-track {
+    block-size: 3px;
+    inline-size: 100%;
+    background-color: var(--band);
+    overflow: hidden;
+  }
+
+  .scroll-rail-fill {
+    block-size: 100%;
+    inline-size: 100%;
+    background-color: var(--vermilion);
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-rail-fill {
+        animation: scroll-rail-progress linear both;
+        animation-timeline: scroll(block root);
+      }
+    }
+  }
+
+  @keyframes scroll-rail-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /* Compacting Sticky Header */
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    padding-top: env(safe-area-inset-top, 0px);
+    background-color: var(--canvas);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .app-header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: 0 0.25rem 1rem rgba(17, 18, 20, 0.08);
+    opacity: 0;
+  }
+
+  @supports ((animation-timeline: scroll()) and (animation-range: 0px 96px)) {
+    @media (prefers-reduced-motion: no-preference) {
+      .app-header::after {
+        animation: header-elevation linear both;
+        animation-timeline: scroll(block root);
+        animation-range: 0px 96px;
+      }
+
+      .header-inner {
+        animation: header-compact linear both;
+        animation-timeline: scroll(block root);
+        animation-range: 0px 96px;
+      }
+    }
+  }
+
+  @keyframes header-elevation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes header-compact {
+    from {
+      padding-block: 0.375rem;
+    }
+    to {
+      padding-block: 0.125rem;
+    }
+  }
+
+  /* Scroll Entry Reveals (visible default; progressive view() enhancement) */
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal-on-scroll {
+        animation: reveal-entry var(--ease-expo-out) both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 28%;
+      }
+
+      .dtp-bar {
+        transform-origin: bottom center;
+        animation: dtp-bar-rise var(--ease-expo-out) both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+      }
+    }
+  }
+
+  @keyframes reveal-entry {
+    from {
+      opacity: 1;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes dtp-bar-rise {
+    from {
+      transform: scaleY(0.2);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  /* Top-Layer <dialog> Quick-Switcher Transition */
+  dialog.switcher-dialog {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 240ms var(--ease-expo-out),
+      transform 240ms var(--ease-expo-out),
+      overlay 240ms allow-discrete,
+      display 240ms allow-discrete;
+    transition-behavior: allow-discrete;
+  }
+
+  dialog.switcher-dialog::backdrop {
+    background-color: var(--backdrop);
+    opacity: 0;
+    transition:
+      opacity 240ms var(--ease-expo-out),
+      overlay 240ms allow-discrete,
+      display 240ms allow-discrete;
+    transition-behavior: allow-discrete;
+  }
+
+  dialog.switcher-dialog[open] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  dialog.switcher-dialog[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    dialog.switcher-dialog[open] {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+
+    dialog.switcher-dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+
+  dialog.switcher-dialog[data-closing] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  dialog.switcher-dialog[data-closing]::backdrop {
+    opacity: 0;
+  }
+
+  /* Intrinsic Size <details> Disclosure */
+  @media (prefers-reduced-motion: no-preference) {
+    details.protocol-item {
+      interpolate-size: allow-keywords;
+    }
+
+    details.protocol-item::details-content {
+      contain: layout;
+      overflow: clip;
+      block-size: 0;
+      opacity: 0;
+      transition:
+        block-size 260ms var(--ease-expo-out),
+        opacity 220ms var(--ease-expo-out),
+        content-visibility 260ms allow-discrete;
+      transition-behavior: allow-discrete;
+    }
+
+    details.protocol-item[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+  }
+
+  /* Cross-Document View Transitions */
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+
+    .app-header {
+      view-transition-name: app-header;
+    }
+
+    .thumb-bar {
+      view-transition-name: app-thumb-bar;
+    }
+
+    main#main-content {
+      view-transition-name: page-main;
+    }
+
+    html:active-view-transition-type(next)::view-transition-old(page-main) {
+      animation: vt-slide-out-left 240ms var(--ease-expo-out) both;
+    }
+
+    html:active-view-transition-type(next)::view-transition-new(page-main) {
+      animation: vt-slide-in-right 280ms var(--ease-expo-out) both;
+    }
+
+    html:active-view-transition-type(previous)::view-transition-old(page-main) {
+      animation: vt-slide-out-right 240ms var(--ease-expo-out) both;
+    }
+
+    html:active-view-transition-type(previous)::view-transition-new(page-main) {
+      animation: vt-slide-in-left 280ms var(--ease-expo-out) both;
+    }
+  }
+
+  @keyframes vt-slide-out-left {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-1.5rem);
+    }
+  }
+
+  @keyframes vt-slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes vt-slide-out-right {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+  }
+
+  @keyframes vt-slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll,
+    .dtp-bar,
+    .scroll-rail-fill {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    dialog.switcher-dialog,
+    dialog.switcher-dialog::backdrop {
+      transition-duration: 0.01ms;
+      transform: none;
+    }
+  }
+}

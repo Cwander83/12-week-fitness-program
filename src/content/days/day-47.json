@@ -1,0 +1,24 @@
+{
+  "id": "day-47",
+  "dayNumber": 47,
+  "weekNumber": 7,
+  "phaseNumber": 2,
+  "title": "Rest (Active Cardio)",
+  "shortSplit": "Cardio",
+  "isRestDay": true,
+  "restMode": "active-recovery",
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "rest",
+      "mode": "active-recovery",
+      "items": [
+        "Cardio: 25 minutes",
+        "Twists: 150 reps"
+      ]
+    }
+  ]
+}

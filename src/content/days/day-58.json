@@ -1,0 +1,192 @@
+{
+  "id": "day-58",
+  "dayNumber": 58,
+  "weekNumber": 9,
+  "phaseNumber": 3,
+  "title": "Shoulders / Calves / Abs",
+  "shortSplit": "DTP Sh",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": true,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Calf Raises",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 10,
+          "reps": "15",
+          "rawText": "10 sets of 15 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Sit Ups",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "15",
+          "rawText": "3 sets of 15 reps"
+        }
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "dtp-set",
+      "label": "DTP Set",
+      "exercises": [
+        {
+          "name": "Smith Overhead Press",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10
+          ]
+        },
+        {
+          "name": "Smith Overhead Press - Behind The Neck",
+          "repWave": [
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "giant-set",
+      "label": "Giant Set",
+      "exercises": [
+        {
+          "name": "Upright Row - Wide Grip",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "10",
+              "rawText": "1 set of 10 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "7",
+              "rawText": "1 set of 7 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "5",
+              "rawText": "1 set of 5 reps"
+            },
+            {
+              "kind": "triple-drop",
+              "sets": 1,
+              "reps": "6–8",
+              "rawText": "1 triple drop set of 6–8 reps"
+            }
+          ]
+        },
+        {
+          "name": "Upright Row - Medium Grip",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "10",
+              "rawText": "1 set of 10 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "7",
+              "rawText": "1 set of 7 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "5",
+              "rawText": "1 set of 5 reps"
+            },
+            {
+              "kind": "triple-drop",
+              "sets": 1,
+              "reps": "6–8",
+              "rawText": "1 triple drop set of 6–8 reps"
+            }
+          ]
+        },
+        {
+          "name": "Upright Row - Narrow Grip",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "10",
+              "rawText": "1 set of 10 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "7",
+              "rawText": "1 set of 7 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "5",
+              "rawText": "1 set of 5 reps"
+            },
+            {
+              "kind": "triple-drop",
+              "sets": 1,
+              "reps": "6–8",
+              "rawText": "1 triple drop set of 6–8 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DayPager from '../../components/chrome/DayPager.astro';
+import type { BookendBlock, DayData, WeekData } from '../../types/workout';
+
+export async function getStaticPaths() {
+  const weekEntries = await getCollection('weeks');
+  const dayEntries = await getCollection('days');
+
+  const daysByNumber = new Map<number, DayData>();
+  for (const entry of dayEntries) {
+    daysByNumber.set(entry.data.dayNumber, entry.data);
+  }
+
+  return weekEntries
+    .map((entry) => entry.data)
+    .sort((a, b) => a.weekNumber - b.weekNumber)
+    .map((week) => {
+      const weekDays: DayData[] = [];
+      for (let d = week.startDay; d <= week.endDay; d++) {
+        const day = daysByNumber.get(d);
+        if (day) weekDays.push(day);
+      }
+      return {
+        params: { week: String(week.weekNumber) },
+        props: { week, weekDays },
+      };
+    });
+}
+
+interface Props {
+  week: WeekData;
+  weekDays: DayData[];
+}
+
+const { week, weekDays } = Astro.props;
+
+const phaseRoman = week.phaseNumber === 1 ? 'I' : week.phaseNumber === 2 ? 'II' : 'III';
+const prevHref = week.weekNumber > 1 ? `/week/${week.weekNumber - 1}` : '/';
+const prevLabel = week.weekNumber > 1 ? `Week ${week.weekNumber - 1}` : 'Overview';
+const nextHref = week.weekNumber < 12 ? `/week/${week.weekNumber + 1}` : '/';
+const nextLabel = week.weekNumber < 12 ? `Week ${week.weekNumber + 1}` : 'Overview';
+
+function summarizeDay(day: DayData): { summary: string; cardio: string; twists: string; badge: string; badgeCls: string } {
+  if (day.isRestDay) {
+    const restBlock = day.blocks.find((b) => b.type === 'rest');
+    const items = restBlock && restBlock.type === 'rest' ? restBlock.items : ['Rest'];
+    const isActive = day.restMode === 'active-recovery';
+    return {
+      summary: isActive
+        ? `Active recovery day: ${items.join(' · ')}.`
+        : 'Complete nervous system and muscle recovery before the next training block.',
+      cardio: isActive ? items.find((i) => i.toLowerCase().includes('cardio')) ?? 'Active' : '0 min',
+      twists: isActive ? items.find((i) => i.toLowerCase().includes('twist')) ?? '0' : '0',
+      badge: isActive ? 'Active Recovery' : 'Full Rest',
+      badgeCls: 'badge-warmup',
+    };
+  }
+
+  const names: string[] = [];
+  for (const b of day.blocks) {
+    if (b.type === 'exercise') names.push(b.name);
+    else if (b.type === 'group') names.push(`${b.label}: ${b.exercises.map((e) => e.name).join(' + ')}`);
+    else if (b.type === 'dtp') names.push(`${b.label}: ${b.exercises.map((e) => e.name).join(' + ')}`);
+  }
+
+  const preBookend = day.blocks.find((b): b is BookendBlock => b.type === 'bookend' && b.slot === 'pre');
+  const cardio = preBookend?.cardio ? `${preBookend.cardio} pre & post` : 'None';
+  const twists = preBookend?.twists ? '150 reps pre & post' : 'None';
+
+  let badge = 'Training Day';
+  let badgeCls = 'badge-failure';
+  if (day.hasDtp) {
+    badge = 'DTP Protocol';
+    badgeCls = 'badge-dtp';
+  } else if (day.hasSupersetOrGiant) {
+    badge = 'Superset / Circuit';
+    badgeCls = 'badge-cobalt';
+  }
+
+  return {
+    summary: names.join(' · '),
+    cardio,
+    twists,
+    badge,
+    badgeCls,
+  };
+}
+---
+
+<BaseLayout
+  title={`Week ${week.weekNumber}: ${week.weekTheme} | 12-Week Hardcore Daily Trainer`}
+  description={`Week ${week.weekNumber} (${week.weekTheme}) — Days ${week.startDay} to ${week.endDay} in Phase ${phaseRoman} (${week.phaseTitle}).`}
+  currentWeek={week.weekNumber}
+  switcherLabel={`Week ${week.weekNumber} · Days ${week.startDay}–${week.endDay}`}
+  prevHref={prevHref}
+  prevLabel={prevLabel}
+  nextHref={nextHref}
+  nextLabel={nextLabel}
+>
+  <article>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Overview</a>
+      <span aria-hidden="true">/</span>
+      <span>Phase {phaseRoman}</span>
+      <span aria-hidden="true">/</span>
+      <span class="crumb-current tabular">Week {week.weekNumber}</span>
+    </nav>
+
+    <header class="week-header">
+      <h1 class="display-face">Week {week.weekNumber} — {week.weekTheme}</h1>
+      <p class="week-subtitle tabular">
+        Phase {phaseRoman}: {week.phaseTitle} · Days {week.startDay}–{week.endDay}
+      </p>
+
+      <div class="week-summary-grid tabular">
+        <div>
+          <div class="summary-lbl">Week Progress</div>
+          <div class="summary-val" data-week-progress={week.weekNumber}>0 / 7 Completed</div>
+        </div>
+        <div>
+          <div class="summary-lbl">Split Volume</div>
+          <div class="summary-val">{week.workoutDaysCount} Training · {week.restDaysCount} Rest</div>
+        </div>
+        <div>
+          <div class="summary-lbl">Cardio Bookends</div>
+          <div class="summary-val">{week.cardioSummary}</div>
+        </div>
+        <div>
+          <div class="summary-lbl">Twists Bookends</div>
+          <div class="summary-val">{week.twistsSummary}</div>
+        </div>
+      </div>
+    </header>
+
+    <section aria-labelledby="schedule-heading">
+      <div class="section-head">
+        <h2 id="schedule-heading" class="display-face">Daily Schedule</h2>
+        <span class="section-meta tabular">Days {week.startDay}–{week.endDay}</span>
+      </div>
+
+      <div class="week-rows">
+        {weekDays.map((day) => {
+          const info = summarizeDay(day);
+          return (
+            <div class="week-day-row reveal-on-scroll">
+              <div class="row-left">
+                <div
+                  class="day-num-box tabular"
+                  data-day-cell={day.dayNumber}
+                  data-kind={day.hasDtp ? 'dtp' : day.isRestDay ? 'rest' : 'train'}
+                  data-state="pending"
+                >
+                  <span>{String(day.dayNumber).padStart(2, '0')}</span>
+                  <svg class="done-check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div class="row-ident">
+                  <h3 class="row-day-title">
+                    <a href={`/day/${day.dayNumber}`} class="row-title-link">
+                      Day {day.dayNumber} — {day.title}
+                    </a>
+                  </h3>
+                  <span class={`badge ${info.badgeCls}`}>{info.badge}</span>
+                </div>
+              </div>
+
+              <div class="row-summary">
+                <p>{info.summary}</p>
+              </div>
+
+              <div class="row-actions tabular">
+                <div class="row-bookends">
+                  <span>Cardio: <strong>{info.cardio}</strong></span>
+                  <span>Twists: <strong>{info.twists}</strong></span>
+                </div>
+                <a href={`/day/${day.dayNumber}`} class="btn-hit btn-outline">
+                  <span>{day.isRestDay ? `Day ${day.dayNumber} Notes` : `Open Day ${day.dayNumber}`}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <DayPager
+      prevHref={prevHref}
+      prevLabel={prevLabel}
+      nextHref={nextHref}
+      nextLabel={nextLabel}
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  @layer components {
+    .crumb-current {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .week-header {
+      padding-block-end: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .week-subtitle {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+
+    .summary-lbl {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .summary-val {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-block-start: 0.125rem;
+    }
+
+    .week-rows {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .week-rows .week-day-row:last-child {
+      border-bottom: 0;
+    }
+
+    .row-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .day-num-box {
+      flex-direction: column;
+      gap: 2px;
+      border-radius: var(--radius-xs);
+    }
+
+    .day-num-box[data-kind='rest'] {
+      background-color: var(--band);
+      color: var(--muted);
+    }
+
+    .day-num-box[data-kind='dtp'] {
+      border-color: var(--vermilion);
+    }
+
+    .day-num-box[data-state='completed'] {
+      background-color: var(--band);
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .day-num-box[data-state='next'] {
+      background-color: var(--vermilion);
+      border-color: var(--vermilion);
+      color: var(--vermilion-ink);
+    }
+
+    .done-check {
+      display: none;
+    }
+
+    .day-num-box[data-state='completed'] .done-check {
+      display: block;
+    }
+
+    .row-ident {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+
+    .row-day-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .row-title-link {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .row-title-link:hover {
+      text-decoration: underline;
+    }
+
+    .row-summary p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+      max-inline-size: 65ch;
+    }
+
+    .row-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 0.75rem;
+    }
+
+    @media (min-width: 48rem) {
+      .row-actions {
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+      }
+    }
+
+    .row-bookends {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .row-bookends strong {
+      color: var(--ink);
+    }
+  }
+</style>

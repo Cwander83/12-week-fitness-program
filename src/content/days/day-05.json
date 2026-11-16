@@ -1,0 +1,140 @@
+{
+  "id": "day-05",
+  "dayNumber": 5,
+  "weekNumber": 1,
+  "phaseNumber": 1,
+  "title": "Shoulders / Calves / Abs",
+  "shortSplit": "Sh/Clv",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Military Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "6–8",
+          "rawText": "2 warm-up sets of 6–8 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "6–8",
+          "rawText": "3 sets of 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Side Raises",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "12–15",
+          "rawText": "1 warm-up set of 12–15 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets of 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Upright Rows",
+      "modifier": "21s",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "7, 7, 7",
+          "rawText": "3 sets of 7, 7, 7 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Rear Delt Raises",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 7,
+          "reps": "12–15",
+          "rawText": "7 sets of 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Weighted Situps",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Seated Calf Raises",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "20",
+              "rawText": "3 sets of 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Calf Raises",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "18–20",
+          "rawText": "3 sets of 18–20 reps (1 foot at a time)",
+          "notes": "1 foot at a time"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes (Walking)",
+      "rawItems": [
+        "Cardio (Walking): 20 minutes"
+      ]
+    }
+  ]
+}

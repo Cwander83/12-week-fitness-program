@@ -1,0 +1,92 @@
+{
+  "id": "day-78",
+  "dayNumber": 78,
+  "weekNumber": 12,
+  "phaseNumber": 3,
+  "title": "Legs",
+  "shortSplit": "1/2 DTP",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": true,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "half-dtp-set",
+      "label": "1/2 DTP Set",
+      "exercises": [
+        {
+          "name": "Leg Press",
+          "warmup": [
+            {
+              "kind": "warmup",
+              "sets": 2,
+              "reps": "8–10",
+              "rawText": "2 warm-up sets of 8–10 reps"
+            }
+          ],
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Seated Hamstring Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 5,
+              "reps": "15–20",
+              "rawText": "5 sets of 15–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Seated Leg Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 5,
+              "reps": "15–20",
+              "rawText": "5 sets of 15–20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

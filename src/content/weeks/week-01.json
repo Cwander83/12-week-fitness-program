@@ -1,0 +1,66 @@
+{
+  "id": "week-01",
+  "weekNumber": 1,
+  "phaseNumber": 1,
+  "phaseTitle": "Hypertrophy Foundation",
+  "weekTheme": "Foundation Failure & 21s",
+  "startDay": 1,
+  "endDay": 7,
+  "workoutDaysCount": 5,
+  "restDaysCount": 2,
+  "cardioSummary": "20 min pre & post",
+  "twistsSummary": "None",
+  "days": [
+    {
+      "dayNumber": 1,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 2,
+      "title": "Chest / Triceps",
+      "shortSplit": "Ch/Tri",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 3,
+      "title": "Rest (Cardio AM/PM)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 4,
+      "title": "Back / Biceps",
+      "shortSplit": "Bk/Bi",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 5,
+      "title": "Shoulders / Calves / Abs",
+      "shortSplit": "Sh/Clv",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 6,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 7,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "id": "day-19",
+  "dayNumber": 19,
+  "weekNumber": 3,
+  "phaseNumber": 1,
+  "title": "Shoulders / Calves / Abs",
+  "shortSplit": "Sh/Clv",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Dumbbell Side Raises",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "15–17",
+              "rawText": "3 sets to failure in 15–17 reps"
+            }
+          ]
+        },
+        {
+          "name": "Front Dumbbell Raises",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "15–17",
+              "rawText": "3 sets to failure in 15–17 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Machine Shoulder Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "15–17",
+          "rawText": "3 sets to failure in 15–17 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Rear Delt Raises",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 7,
+          "reps": "12–15",
+          "rawText": "7 sets to failure in 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Calf Raises",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 5,
+          "reps": "20",
+          "rawText": "5 sets to failure in 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Sit-Ups",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "to failure",
+          "rawText": "3 sets to failure"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "id": "day-04",
+  "dayNumber": 4,
+  "weekNumber": 1,
+  "phaseNumber": 1,
+  "title": "Back / Biceps",
+  "shortSplit": "Bk/Bi",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "back",
+    "biceps"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Grip Pulldown",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "8–10",
+          "rawText": "3 sets of 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Bent Over Barbell Rows",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "8–10",
+          "rawText": "3 sets of 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hyperextension",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "10–12",
+          "rawText": "1 warm-up set of 10–12 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Straight Arm Pulldown",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 7,
+          "reps": "12–15",
+          "rawText": "7 sets of 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Concentration Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "12–15",
+          "rawText": "2 warm-up sets of 12–15 reps (per arm)",
+          "notes": "per arm"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets of 12–15 reps (per arm)",
+          "notes": "per arm"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Alternating Dumbbell Curl",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets of 12–15 reps (per arm)",
+          "notes": "per arm"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Cable Curls",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "15–20",
+          "rawText": "3 sets of 15–20 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+---
+import type { BookendBlock } from '../../types/workout';
+
+export interface Props {
+  block: BookendBlock;
+}
+
+const { block } = Astro.props;
+const label = block.slot === 'pre' ? 'Pre-Session Bookend' : 'Post-Session Bookend';
+---
+
+<section class="bookend-strip" aria-label={label}>
+  <span class="bookend-label">{label}</span>
+  <div class="bookend-items tabular">
+    {block.cardio && (
+      <span class="inline-pair">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+        </svg>
+        <span>Cardio: {block.cardio}</span>
+      </span>
+    )}
+    {block.twists && (
+      <span class="inline-pair">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="17 2 21 6 17 10" />
+          <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+          <polyline points="7 22 3 18 7 14" />
+          <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+        </svg>
+        <span>Twists: {block.twists}</span>
+      </span>
+    )}
+    {!block.cardio && !block.twists && block.rawItems.map((item) => (
+      <span>{item}</span>
+    ))}
+  </div>
+</section>

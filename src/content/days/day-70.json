@@ -1,0 +1,174 @@
+{
+  "id": "day-70",
+  "dayNumber": 70,
+  "weekNumber": 10,
+  "phaseNumber": 3,
+  "title": "Back / Biceps / Triceps",
+  "shortSplit": "Bk/Arm",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "back",
+    "biceps",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Grip Bent Over Rows",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "6–10",
+          "rawText": "3 sets of 6–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Rack Deadlifts",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "4–6",
+              "rawText": "3 sets of 4–6 reps"
+            }
+          ]
+        },
+        {
+          "name": "Straight Arm Pullovers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Single Arm Rows",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "giant-set",
+      "label": "Giant Set",
+      "exercises": [
+        {
+          "name": "Incline Biceps Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "8–12",
+              "rawText": "3 sets of 8–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Rope Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Reverse Grip Pullups",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "8–12",
+              "rawText": "3 sets of 8–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "giant-set",
+      "label": "Giant Set",
+      "exercises": [
+        {
+          "name": "Tricep Cable Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "20",
+              "rawText": "3 sets of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Overhead Tricep Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "12",
+              "rawText": "3 sets of 12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Dips",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10",
+              "rawText": "3 sets of 10 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

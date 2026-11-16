@@ -1,0 +1,148 @@
+{
+  "id": "day-10",
+  "dayNumber": 10,
+  "weekNumber": 2,
+  "phaseNumber": 1,
+  "title": "Shoulders",
+  "shortSplit": "Shld",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Seated Military Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "6–8",
+          "rawText": "3 sets to failure in 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "One Arm Shoulder Press Machine",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 sets to failure in 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Side Raises",
+          "prescriptions": [
+            {
+              "kind": "warmup",
+              "sets": 1,
+              "reps": "8–10",
+              "rawText": "1 warm-up set of 8–10 reps"
+            },
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "12–16",
+              "rawText": "3 sets to failure in 12–16 reps"
+            }
+          ]
+        },
+        {
+          "name": "Side Raises Behind The Back",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "12–16",
+              "rawText": "3 sets to failure in 12–16 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Dumbbell Shrugs",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "12–20",
+          "rawText": "3 sets to failure in 12–20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Rear Raises",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 7,
+          "reps": "12–16",
+          "rawText": "7 sets of 12–16 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

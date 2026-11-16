@@ -1,0 +1,268 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DayPager from '../../components/chrome/DayPager.astro';
+import MuscleMapSvg from '../../components/diagrams/MuscleMapSvg.astro';
+import BookendStrip from '../../components/workout/BookendStrip.astro';
+import ExerciseCard from '../../components/workout/ExerciseCard.astro';
+import SetGroupRail from '../../components/workout/SetGroupRail.astro';
+import DtpBlock from '../../components/workout/DtpBlock.astro';
+import RestDayPanel from '../../components/workout/RestDayPanel.astro';
+import DayCompleteToggle from '../../components/workout/DayCompleteToggle.astro';
+import type { DayData, MuscleGroup, WeekData } from '../../types/workout';
+
+export async function getStaticPaths() {
+  const dayEntries = await getCollection('days');
+  const weekEntries = await getCollection('weeks');
+
+  const days = dayEntries
+    .map((entry) => entry.data)
+    .sort((a, b) => a.dayNumber - b.dayNumber);
+  const weeksByNumber = new Map<number, WeekData>();
+  for (const entry of weekEntries) {
+    weeksByNumber.set(entry.data.weekNumber, entry.data);
+  }
+
+  return days.map((day, idx) => {
+    const week = weeksByNumber.get(day.weekNumber)!;
+    const prevDay = idx > 0 ? days[idx - 1]! : null;
+    const nextDay = idx < days.length - 1 ? days[idx + 1]! : null;
+    const nextTrainingDay =
+      days.slice(idx + 1).find((candidate) => !candidate.isRestDay) ?? null;
+
+    return {
+      params: { day: String(day.dayNumber) },
+      props: { day, week, prevDay, nextDay, nextTrainingDay },
+    };
+  });
+}
+
+interface Props {
+  day: DayData;
+  week: WeekData;
+  prevDay: DayData | null;
+  nextDay: DayData | null;
+  nextTrainingDay: DayData | null;
+}
+
+const { day, week, prevDay, nextDay, nextTrainingDay } = Astro.props;
+
+const MUSCLE_LABELS: Record<MuscleGroup, string> = {
+  quads: 'Quadriceps (Front)',
+  hamstrings: 'Hamstrings (Rear)',
+  glutes: 'Glutes',
+  calves: 'Calves',
+  chest: 'Pectorals (Chest)',
+  back: 'Lats & Mid-Back',
+  shoulders: 'Deltoids (Shoulders)',
+  biceps: 'Biceps Brachii (Front)',
+  triceps: 'Triceps Brachii (Rear)',
+  abs: 'Abdominals & Core',
+};
+
+const phaseRoman = day.phaseNumber === 1 ? 'I' : day.phaseNumber === 2 ? 'II' : 'III';
+
+const preBookend = day.blocks.find((b) => b.type === 'bookend' && b.slot === 'pre');
+const postBookend = day.blocks.find((b) => b.type === 'bookend' && b.slot === 'post');
+const workoutBlocks = day.blocks.filter(
+  (b) => b.type === 'exercise' || b.type === 'group' || b.type === 'dtp',
+);
+
+let modalityLabel = 'Training Day';
+let modalityClass = 'badge-failure';
+if (day.isRestDay) {
+  modalityLabel = day.restMode === 'active-recovery' ? 'Active Recovery' : 'Full Rest';
+  modalityClass = 'badge-warmup';
+} else if (day.hasDtp) {
+  modalityLabel = 'DTP Protocol';
+  modalityClass = 'badge-dtp';
+} else if (day.hasSupersetOrGiant) {
+  modalityLabel = 'Superset / Giant Set';
+  modalityClass = 'badge-cobalt';
+}
+
+const primaryLabels = day.primaryMuscles.map((m) => MUSCLE_LABELS[m]);
+const secondaryLabels = day.secondaryMuscles.map((m) => MUSCLE_LABELS[m]);
+
+const prevHref = prevDay ? `/day/${prevDay.dayNumber}` : '/';
+const prevLabel = prevDay ? `Day ${prevDay.dayNumber} (${prevDay.shortSplit})` : 'Overview';
+const nextHref = nextDay ? `/day/${nextDay.dayNumber}` : '/';
+const nextLabel = nextDay ? `Day ${nextDay.dayNumber} (${nextDay.shortSplit})` : 'Overview';
+
+let standaloneExIdx = 0;
+---
+
+<BaseLayout
+  title={`Day ${day.dayNumber}: ${day.title} | 12-Week Hardcore Daily Trainer`}
+  description={`Week ${day.weekNumber}, Day ${day.dayNumber} (${day.title}) — Phase ${phaseRoman}: ${week.phaseTitle}.`}
+  currentWeek={day.weekNumber}
+  currentDay={day.dayNumber}
+  switcherLabel={`Week ${day.weekNumber} · Day ${day.dayNumber} — Switch`}
+  prevHref={prevHref}
+  prevLabel={prevLabel}
+  nextHref={nextHref}
+  nextLabel={nextLabel}
+>
+  <article>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Overview</a>
+      <span aria-hidden="true">/</span>
+      <a href={`/week/${day.weekNumber}`} class="tabular">Week {day.weekNumber}</a>
+      <span aria-hidden="true">/</span>
+      <span class="crumb-current tabular">Day {day.dayNumber}</span>
+    </nav>
+
+    <header class="day-header">
+      <h1 class="display-face tabular">Day {day.dayNumber} — {day.title}</h1>
+      <div class="day-meta">
+        <span class={`badge ${modalityClass}`}>{modalityLabel}</span>
+        <span class="day-phase-info tabular">
+          Phase {phaseRoman} · Week {day.weekNumber} — {week.weekTheme}
+        </span>
+      </div>
+    </header>
+
+    {preBookend && preBookend.type === 'bookend' && <BookendStrip block={preBookend} />}
+
+    <section class="anatomy-panel" aria-label="Target Anatomy and Split">
+      <div>
+        <MuscleMapSvg
+          primaryMuscles={day.primaryMuscles}
+          secondaryMuscles={day.secondaryMuscles}
+          splitLabel={day.title}
+        />
+      </div>
+      <div class="anatomy-info">
+        {day.isRestDay ? (
+          <>
+            <p class="anatomy-mobile-line">
+              Recovery Focus: <strong>{modalityLabel}</strong> (Week {day.weekNumber})
+            </p>
+            <div class="anatomy-desktop-copy">
+              <h2 class="anatomy-heading">Recovery Focus</h2>
+              <p class="anatomy-copy">
+                Scheduled recovery day in Week {day.weekNumber}. No primary resistance muscle group targeted today.
+              </p>
+            </div>
+          </>
+        ) : (
+          <>
+            <p class="anatomy-mobile-line">
+              Primary Target: <strong>{primaryLabels.join(' · ')}</strong>
+            </p>
+            <div class="anatomy-desktop-copy">
+              <h2 class="anatomy-heading">Target Anatomy &amp; Split</h2>
+              <p class="anatomy-copy">
+                Primary Highlight: <strong>{primaryLabels.join(' · ')}</strong>
+              </p>
+              {secondaryLabels.length > 0 && (
+                <p class="anatomy-secondary">
+                  Secondary Synergists: {secondaryLabels.join(' · ')}
+                </p>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+
+    {day.isRestDay ? (
+      <RestDayPanel day={day} nextTrainingDay={nextTrainingDay} />
+    ) : (
+      <section aria-labelledby="prescription-heading">
+        <div class="section-head">
+          <h2 id="prescription-heading" class="display-face">Workout Prescription</h2>
+          <span class="section-meta tabular">Read-Only Gym Sheet</span>
+        </div>
+
+        <div class="blocks-stack">
+          {workoutBlocks.map((block) => {
+            if (block.type === 'exercise') {
+              const currentIdx = standaloneExIdx++;
+              return <ExerciseCard exercise={block} index={currentIdx} headingLevel="h3" />;
+            }
+            if (block.type === 'group') {
+              return <SetGroupRail block={block} />;
+            }
+            if (block.type === 'dtp') {
+              return <DtpBlock block={block} />;
+            }
+            return null;
+          })}
+        </div>
+      </section>
+    )}
+
+    <DayCompleteToggle
+      dayNumber={day.dayNumber}
+      nextDay={nextDay ? { dayNumber: nextDay.dayNumber, title: nextDay.title } : null}
+    />
+
+    {postBookend && postBookend.type === 'bookend' && <BookendStrip block={postBookend} />}
+
+    <DayPager
+      prevHref={prevHref}
+      prevLabel={prevLabel}
+      nextHref={nextHref}
+      nextLabel={nextLabel}
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  @layer components {
+    .crumb-current {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .day-header {
+      padding-block-end: 0.65rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .day-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem 0.75rem;
+      margin-block-start: 0.35rem;
+    }
+
+    .day-phase-info {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .anatomy-mobile-line strong,
+    .anatomy-copy strong {
+      color: var(--ink);
+    }
+
+    .anatomy-heading {
+      margin: 0 0 0.375rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .anatomy-copy {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .anatomy-secondary {
+      margin: 0.35rem 0 0;
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    .blocks-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+  }
+</style>

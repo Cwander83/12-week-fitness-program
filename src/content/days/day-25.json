@@ -1,0 +1,82 @@
+{
+  "id": "day-25",
+  "dayNumber": 25,
+  "weekNumber": 4,
+  "phaseNumber": 1,
+  "title": "Chest",
+  "shortSplit": "Chest",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest"
+  ],
+  "secondaryMuscles": [
+    "shoulders",
+    "triceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Butterfly",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "12, 12, 12",
+          "rawText": "3 triple drop sets of 12, 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Machine Press",
+      "prescriptions": [
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "12, 12, 12",
+          "rawText": "3 triple drop sets of 12, 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Dumbbell Flyes",
+      "prescriptions": [
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "12, 12, 12",
+          "rawText": "3 triple drop sets of 12, 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

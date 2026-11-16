@@ -1,0 +1,88 @@
+{
+  "id": "day-24",
+  "dayNumber": 24,
+  "weekNumber": 4,
+  "phaseNumber": 1,
+  "title": "Shoulders",
+  "shortSplit": "Shld",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Side Lateral Raise",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "10, 10, 10",
+          "rawText": "3 triple drop sets of 10, 10, 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Shoulder Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 3,
+          "reps": "10, 10, 10",
+          "rawText": "3 triple drop sets of 10, 10, 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Rear Delt Raise",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 1,
+          "reps": "12 + 20 partials",
+          "rawText": "1 set of 12 reps + 20 partial reps",
+          "notes": "+ 20 partial reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

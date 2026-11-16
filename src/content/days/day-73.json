@@ -1,0 +1,60 @@
+{
+  "id": "day-73",
+  "dayNumber": 73,
+  "weekNumber": 11,
+  "phaseNumber": 3,
+  "title": "Legs",
+  "shortSplit": "DTP Leg",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": true,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "dtp-set",
+      "label": "Leg Press (DTP)",
+      "exercises": [
+        {
+          "name": "Leg Press",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}
