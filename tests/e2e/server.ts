@@ -19,6 +19,7 @@ const MIME_TYPES: Record<string, string> = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.svg': 'image/svg+xml',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
 };
 
@@ -30,6 +31,8 @@ function resolveHeaders(pathname: string): Record<string, string> {
       matches = true;
     } else if (rule.source === '/_astro/(.*)') {
       matches = pathname.startsWith('/_astro/');
+    } else if (rule.source === pathname) {
+      matches = true;
     } else {
       const regex = new RegExp(`^${rule.source}$`);
       matches = regex.test(pathname);
@@ -118,7 +121,9 @@ export async function startStaticServer(): Promise<StaticTestServer> {
 
     const ext = path.extname(filePath).toLowerCase();
     res.statusCode = 200;
-    res.setHeader('Content-Type', MIME_TYPES[ext] ?? 'application/octet-stream');
+    if (!res.hasHeader('content-type')) {
+      res.setHeader('Content-Type', MIME_TYPES[ext] ?? 'application/octet-stream');
+    }
     createReadStream(filePath).pipe(res);
   });
 

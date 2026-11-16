@@ -107,6 +107,8 @@ describe('architecture & defense-in-depth security invariants', () => {
     expect(clientInitSource).toContain('new Map()');
     expect(clientInitSource).toContain("pathname.replace(/^\\/+/, '/')");
     expect(clientInitSource).toContain("href.startsWith('/') && !href.startsWith('//')");
+    expect(clientInitSource).toContain("createPolicy('pwa-sw'");
+    expect(clientInitSource).toContain("input !== '/sw.js'");
   });
 
   it('confirms zero .env* files in root and zero hardcoded secret patterns across source, scripts, tests, and vercel.ts', () => {
@@ -249,6 +251,16 @@ describe('architecture & defense-in-depth security invariants', () => {
       const html = readFileSync(htmlFile, 'utf8');
 
       expect(html, `Unexpected javascript: URI in ${rel}`).not.toMatch(/href\s*=\s*["']\s*javascript:/i);
+      expect(html, `Unexpected inline SVG data URI icon in ${rel}`).not.toContain('data:image/svg+xml');
+      expect(html, `Missing manifest link in ${rel}`).toContain(
+        '<link rel="manifest" href="/manifest.webmanifest">',
+      );
+      expect(html, `Missing SVG icon link in ${rel}`).toContain(
+        '<link rel="icon" type="image/svg+xml" href="/icon.svg">',
+      );
+      expect(html, `Missing apple-touch-icon link in ${rel}`).toContain(
+        '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
+      );
 
       const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
       expect(scripts.length, `Expected scripts in ${rel}`).toBeGreaterThanOrEqual(2);
@@ -281,5 +293,72 @@ describe('architecture & defense-in-depth security invariants', () => {
         ).toBe(true);
       }
     }
+  });
+
+  it('verifies built PWA manifest, icons, and offline service worker integrity', () => {
+    const distDir = path.join(ROOT_DIR, 'dist');
+    expect(
+      existsSync(distDir),
+      'Run `pnpm build` before running architecture-security verification',
+    ).toBe(true);
+
+    const manifestPath = path.join(distDir, 'manifest.webmanifest');
+    expect(existsSync(manifestPath), 'Missing dist/manifest.webmanifest').toBe(true);
+
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
+      id: string;
+      display: string;
+      start_url: string;
+      scope: string;
+      icons: Array<{ src: string; sizes: string; purpose?: string }>;
+      shortcuts: Array<{ name: string; url: string; icons?: Array<{ src: string }> }>;
+    };
+
+    expect(manifest.id).toBe('/');
+    expect(manifest.display).toBe('standalone');
+    expect(manifest.start_url).toBe('/');
+    expect(manifest.scope).toBe('/');
+    expect(manifest.icons.length).toBeGreaterThanOrEqual(4);
+    expect(manifest.shortcuts.length).toBeGreaterThanOrEqual(2);
+
+    const iconPaths = new Set<string>(['/apple-touch-icon.png']);
+    for (const icon of manifest.icons) {
+      expect(icon.src.startsWith('/')).toBe(true);
+      iconPaths.add(icon.src);
+    }
+    for (const shortcut of manifest.shortcuts) {
+      for (const icon of shortcut.icons ?? []) {
+        expect(icon.src.startsWith('/')).toBe(true);
+        iconPaths.add(icon.src);
+      }
+    }
+
+    for (const iconRelUrl of iconPaths) {
+      const diskPath = path.join(distDir, iconRelUrl.replace(/^\/+/, ''));
+      expect(existsSync(diskPath), `Missing built icon asset ${iconRelUrl}`).toBe(true);
+      expect(readFileSync(diskPath).byteLength).toBeGreaterThan(0);
+    }
+
+    const swPath = path.join(distDir, 'sw.js');
+    expect(existsSync(swPath), 'Missing dist/sw.js').toBe(true);
+    const swSource = readFileSync(swPath, 'utf8');
+
+    expect(swSource).not.toMatch(/https?:\/\//i);
+    expect(swSource).not.toMatch(/\bimportScripts\b/);
+    expect(swSource).not.toMatch(/\beval\s*\(/);
+    expect(swSource).not.toMatch(/\bnew\s+Function\b/);
+
+    expect(swSource).toContain("const STATIC_CACHE = 'trainer-static-' + CACHE_VERSION;");
+    expect(swSource).toContain("const PAGES_CACHE = 'trainer-pages-' + CACHE_VERSION;");
+    expect(swSource).toContain('const MAX_STATIC_ENTRIES = 120;');
+
+    for (const expectedRoute of ['/', '/week/1', '/week/12', '/day/1', '/day/54', '/day/84']) {
+      expect(swSource).toContain(JSON.stringify(expectedRoute));
+    }
+
+    const routesMatch = swSource.match(/const PRECACHE_ROUTES = (\[[\s\S]*?\]);/);
+    expect(routesMatch).not.toBeNull();
+    const precachedRoutes = JSON.parse(routesMatch![1]!) as string[];
+    expect(precachedRoutes).toHaveLength(97);
   });
 });

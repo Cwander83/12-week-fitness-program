@@ -20,6 +20,18 @@ describe('vercel.ts security & cache headers', () => {
     );
   });
 
+  it('configures revalidating PWA headers on /sw.js and /manifest.webmanifest', () => {
+    const swHeaders = getHeaderMap('/sw.js');
+    expect(swHeaders.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
+    expect(swHeaders.get('Cache-Control')?.toLowerCase()).not.toContain('no-store');
+    expect(swHeaders.get('Service-Worker-Allowed')).toBe('/');
+
+    const manifestHeaders = getHeaderMap('/manifest.webmanifest');
+    expect(manifestHeaders.get('Content-Type')).toBe('application/manifest+json; charset=utf-8');
+    expect(manifestHeaders.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
+    expect(manifestHeaders.get('Cache-Control')?.toLowerCase()).not.toContain('no-store');
+  });
+
   it('sets bfcache-friendly global security headers without no-store', () => {
     const rootHeaders = getHeaderMap('/(.*)');
 
@@ -48,13 +60,14 @@ describe('vercel.ts security & cache headers', () => {
     expect(csp).toContain("default-src 'self'");
     expect(csp).toContain("'report-sample'");
     expect(csp).toContain("frame-src 'none'");
-    expect(csp).toContain("worker-src 'none'");
+    expect(csp).toContain("worker-src 'self'");
     expect(csp).toContain("manifest-src 'self'");
     expect(csp).toContain("object-src 'none'");
     expect(csp).toContain("base-uri 'none'");
     expect(csp).toContain("frame-ancestors 'none'");
     expect(csp).toContain("form-action 'none'");
     expect(csp).toContain("require-trusted-types-for 'script'");
+    expect(csp).toContain('trusted-types pwa-sw');
     expect(csp).toContain('upgrade-insecure-requests');
 
     const scriptSrc =

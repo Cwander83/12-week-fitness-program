@@ -63,11 +63,15 @@ const manifestJson = JSON.stringify(dayManifest)
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23111214'/%3E%3Crect x='3' y='7' width='3' height='10' fill='%23FAFAFA'/%3E%3Crect x='7' y='5' width='2.5' height='14' fill='%23FAFAFA'/%3E%3Crect x='9.5' y='11' width='5' height='2' fill='%23D9381E'/%3E%3Crect x='14.5' y='5' width='2.5' height='14' fill='%23FAFAFA'/%3E%3Crect x='18' y='7' width='3' height='10' fill='%23FAFAFA'/%3E%3C/svg%3E"
-    />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAFA" data-theme-color="light" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0C0E" data-theme-color="dark" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="12W Trainer" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <script is:inline>try{const s=localStorage.getItem("color-scheme");if(s==="light"||s==="dark"){document.head.querySelector('meta[name="color-scheme"]')?.setAttribute("content",s)}}catch{}</script>
     <title>{title}</title>
     <meta name="description" content={description} />

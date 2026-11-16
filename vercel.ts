@@ -11,13 +11,14 @@ const CONTENT_SECURITY_POLICY = [
   "font-src 'self'",
   "connect-src 'self'",
   "frame-src 'none'",
-  "worker-src 'none'",
+  "worker-src 'self'",
   "manifest-src 'self'",
   "object-src 'none'",
   "base-uri 'none'",
   "frame-ancestors 'none'",
   "form-action 'none'",
   "require-trusted-types-for 'script'",
+  'trusted-types pwa-sw',
   'upgrade-insecure-requests',
 ].join('; ');
 
@@ -47,6 +48,14 @@ export const config: VercelConfig = {
         key: 'Cache-Control',
         value: 'public, max-age=31536000, immutable',
       },
+    ]),
+    routes.header('/sw.js', [
+      { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+      { key: 'Service-Worker-Allowed', value: '/' },
+    ]),
+    routes.header('/manifest.webmanifest', [
+      { key: 'Content-Type', value: 'application/manifest+json; charset=utf-8' },
+      { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
     ]),
   ],
 };

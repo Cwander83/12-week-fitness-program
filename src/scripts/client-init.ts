@@ -33,7 +33,67 @@ interface NavigationLike {
   } | null;
 }
 
+interface TrustedTypePolicyLike {
+  createScriptURL(input: string): unknown;
+}
+
+interface TrustedTypesFactoryLike {
+  createPolicy(
+    name: string,
+    rules: { createScriptURL?: (input: string) => string },
+  ): TrustedTypePolicyLike;
+}
+
+interface BeforeInstallPromptEventLike extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform?: string }>;
+}
+
+interface NavigatorInstallLike extends Navigator {
+  install?: () => Promise<unknown>;
+  standalone?: boolean;
+}
+
 const COLOR_SCHEME_KEY = 'color-scheme';
+let swTrustedPolicy: TrustedTypePolicyLike | null | undefined;
+
+function getSwScriptUrl(): string {
+  if (swTrustedPolicy === undefined) {
+    const tt = (window as unknown as { trustedTypes?: TrustedTypesFactoryLike }).trustedTypes;
+    if (tt && typeof tt.createPolicy === 'function') {
+      swTrustedPolicy = tt.createPolicy('pwa-sw', {
+        createScriptURL: (input: string): string => {
+          if (input !== '/sw.js') {
+            throw new TypeError(`Blocked untrusted Service Worker URL: ${input}`);
+          }
+          return input;
+        },
+      });
+    } else {
+      swTrustedPolicy = null;
+    }
+  }
+  return swTrustedPolicy ? (swTrustedPolicy.createScriptURL('/sw.js') as string) : '/sw.js';
+}
+
+function registerServiceWorker(): void {
+  if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
+  const register = (): void => {
+    try {
+      const swUrl = getSwScriptUrl();
+      void navigator.serviceWorker.register(swUrl, { scope: '/' }).catch(() => {
+        // Ignore registration failures cleanly.
+      });
+    } catch {
+      // Ignore Trusted Types or environment errors cleanly.
+    }
+  };
+  if (document.readyState === 'complete') {
+    register();
+  } else {
+    window.addEventListener('load', register, { once: true });
+  }
+}
 
 function getColorSchemeMeta(): HTMLMetaElement | null {
   return document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
@@ -59,6 +119,19 @@ function syncThemeToggleUI(): void {
   const resolved = resolveCurrentTheme(meta);
   const schemeContent = meta?.getAttribute('content') ?? 'light dark';
   document.documentElement.setAttribute('data-resolved-theme', resolved);
+
+  const lightThemeMeta = document.querySelector<HTMLMetaElement>('meta[data-theme-color="light"]');
+  const darkThemeMeta = document.querySelector<HTMLMetaElement>('meta[data-theme-color="dark"]');
+  if (schemeContent === 'dark') {
+    lightThemeMeta?.setAttribute('content', '#0B0C0E');
+    darkThemeMeta?.setAttribute('content', '#0B0C0E');
+  } else if (schemeContent === 'light') {
+    lightThemeMeta?.setAttribute('content', '#FAFAFA');
+    darkThemeMeta?.setAttribute('content', '#FAFAFA');
+  } else {
+    lightThemeMeta?.setAttribute('content', '#FAFAFA');
+    darkThemeMeta?.setAttribute('content', '#0B0C0E');
+  }
 
   for (const btn of document.querySelectorAll<HTMLElement>('[data-theme-toggle]')) {
     btn.setAttribute('data-resolved-theme', resolved);
@@ -199,9 +272,102 @@ function setupDirectionalViewTransitions(): void {
   });
 }
 
+function setupInstallPrompt(): void {
+  const installBtn = document.querySelector<HTMLButtonElement>('[data-install-app]');
+  const installStatus = document.querySelector<HTMLElement>('[data-install-status]');
+  if (!installBtn) return;
+
+  const standaloneMedia = window.matchMedia('(display-mode: standalone)');
+  const isStandalone = (): boolean =>
+    standaloneMedia.matches || (navigator as NavigatorInstallLike).standalone === true;
+  const supportsWebInstall =
+    typeof (Navigator.prototype as { install?: unknown }).install === 'function';
+
+  let deferredInstallPrompt: BeforeInstallPromptEventLike | null = null;
+
+  const setInstallVisible = (visible: boolean): void => {
+    const show = visible && !isStandalone();
+    installBtn.hidden = !show;
+    if (show) {
+      installBtn.removeAttribute('hidden');
+    } else {
+      installBtn.setAttribute('hidden', '');
+    }
+  };
+
+  const setStatus = (message: string): void => {
+    if (installStatus) {
+      installStatus.textContent = message;
+    }
+  };
+
+  setInstallVisible(supportsWebInstall);
+
+  standaloneMedia.addEventListener('change', () => {
+    if (isStandalone()) {
+      deferredInstallPrompt = null;
+      setInstallVisible(false);
+    }
+  });
+
+  window.addEventListener('beforeinstallprompt', (event: Event) => {
+    event.preventDefault();
+    if (isStandalone()) return;
+    deferredInstallPrompt = event as BeforeInstallPromptEventLike;
+    if (!supportsWebInstall) {
+      setInstallVisible(true);
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    setInstallVisible(false);
+    setStatus('App installed.');
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (installBtn.getAttribute('aria-disabled') === 'true') return;
+    installBtn.setAttribute('aria-disabled', 'true');
+    try {
+      const nav = navigator as NavigatorInstallLike;
+      if (supportsWebInstall && typeof nav.install === 'function') {
+        await nav.install();
+        setStatus('App install requested.');
+        setInstallVisible(false);
+        return;
+      }
+
+      const promptEvent = deferredInstallPrompt;
+      if (!promptEvent) {
+        setInstallVisible(false);
+        return;
+      }
+
+      deferredInstallPrompt = null;
+      await promptEvent.prompt();
+      const choice = await promptEvent.userChoice;
+      setStatus(
+        choice?.outcome === 'accepted'
+          ? 'App installation accepted.'
+          : 'App installation dismissed.',
+      );
+      setInstallVisible(false);
+    } catch {
+      setStatus('App installation unavailable.');
+      if (!supportsWebInstall) {
+        setInstallVisible(false);
+      }
+    } finally {
+      installBtn.removeAttribute('aria-disabled');
+    }
+  });
+}
+
 function initApp(): void {
   syncThemeToggleUI();
   setupDirectionalViewTransitions();
+  registerServiceWorker();
+  setupInstallPrompt();
 
   // Import ?p= backup token if present and clean URL without reload.
   try {

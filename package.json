@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "compile:workouts": "tsx scripts/compile-workouts.ts",
+    "generate:icons": "tsx scripts/generate-pwa-icons.ts",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -28,11 +29,5 @@
     "tsx": "^4.23.15",
     "typescript": "^5.8.3",
     "vitest": "^5.1.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "path-to-regexp": "6.3.0",
-      "zod": "^4.6.7"
-    }
   }
 }

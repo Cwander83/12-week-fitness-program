@@ -400,16 +400,27 @@ test.describe('Dark Mode toggle persistence & OS reset', () => {
     expect(await page.evaluate(() => localStorage.getItem('color-scheme'))).toBeNull();
 
     const toggleBtn = page.locator('[data-theme-toggle]');
+    const lightThemeColor = page.locator('meta[data-theme-color="light"]');
+    const darkThemeColor = page.locator('meta[data-theme-color="dark"]');
+    await expect(lightThemeColor).toHaveAttribute('content', '#FAFAFA');
+    await expect(darkThemeColor).toHaveAttribute('content', '#0B0C0E');
+
     await toggleBtn.click();
     await expect(meta).toHaveAttribute('content', 'dark');
+    await expect(lightThemeColor).toHaveAttribute('content', '#0B0C0E');
+    await expect(darkThemeColor).toHaveAttribute('content', '#0B0C0E');
     expect(await page.evaluate(() => localStorage.getItem('color-scheme'))).toBe('dark');
 
     await page.reload({ waitUntil: 'networkidle' });
     await expect(meta).toHaveAttribute('content', 'dark');
+    await expect(lightThemeColor).toHaveAttribute('content', '#0B0C0E');
+    await expect(darkThemeColor).toHaveAttribute('content', '#0B0C0E');
     expect(await page.evaluate(() => localStorage.getItem('color-scheme'))).toBe('dark');
 
     await toggleBtn.click();
     await expect(meta).toHaveAttribute('content', 'light dark');
+    await expect(lightThemeColor).toHaveAttribute('content', '#FAFAFA');
+    await expect(darkThemeColor).toHaveAttribute('content', '#0B0C0E');
     expect(await page.evaluate(() => localStorage.getItem('color-scheme'))).toBeNull();
 
     await assertCleanTelemetry(page, telemetry);
@@ -450,6 +461,174 @@ test.describe('prefers-reduced-motion: reduce', () => {
 
       expect(hiddenElements, `Reduced motion check failed on ${route}`).toEqual([]);
     }
+
+    await assertCleanTelemetry(page, telemetry);
+    await context.close();
+  });
+});
+
+test.describe('PWA Manifest, Offline Service Worker, Trusted Types & Install UI', () => {
+  test('serves /manifest.webmanifest, /sw.js, and every declared icon with proper headers', async ({ request }) => {
+    const manifestRes = await request.get(`${server.baseUrl}/manifest.webmanifest`);
+    expect(manifestRes.status()).toBe(200);
+    expect(manifestRes.headers()['content-type']).toContain('application/manifest+json');
+    expect(manifestRes.headers()['cache-control']).toBe('public, max-age=0, must-revalidate');
+
+    const manifest = (await manifestRes.json()) as {
+      id: string;
+      display: string;
+      start_url: string;
+      scope: string;
+      icons: Array<{ src: string; type: string; purpose?: string }>;
+      shortcuts: Array<{ name: string; url: string; icons?: Array<{ src: string }> }>;
+    };
+    expect(manifest.id).toBe('/');
+    expect(manifest.display).toBe('standalone');
+    expect(manifest.start_url).toBe('/');
+    expect(manifest.scope).toBe('/');
+    expect(manifest.icons.length).toBeGreaterThanOrEqual(4);
+    expect(manifest.shortcuts.map((s) => s.url)).toEqual(['/', '/day/1']);
+
+    const swRes = await request.get(`${server.baseUrl}/sw.js`);
+    expect(swRes.status()).toBe(200);
+    expect(swRes.headers()['cache-control']).toBe('public, max-age=0, must-revalidate');
+    expect(swRes.headers()['service-worker-allowed']).toBe('/');
+
+    const assetUrls = new Set<string>(['/apple-touch-icon.png']);
+    for (const icon of manifest.icons) assetUrls.add(icon.src);
+    for (const shortcut of manifest.shortcuts) {
+      for (const icon of shortcut.icons ?? []) assetUrls.add(icon.src);
+    }
+
+    for (const iconUrl of assetUrls) {
+      const iconRes = await request.get(`${server.baseUrl}${iconUrl}`);
+      expect(iconRes.status(), `Expected 200 OK for ${iconUrl}`).toBe(200);
+      expect((await iconRes.body()).byteLength).toBeGreaterThan(0);
+    }
+  });
+
+  test('activates Service Worker cleanly, enforces Trusted Types, and operates fully offline', async ({ browser }) => {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await context.newPage();
+    const telemetry = await attachTelemetry(page);
+
+    await page.goto(`${server.baseUrl}/`, { waitUntil: 'networkidle' });
+
+    const swActive = await page.evaluate(async () => {
+      const reg = await navigator.serviceWorker.ready;
+      if (!navigator.serviceWorker.controller) {
+        await new Promise<void>((resolve) => {
+          if (navigator.serviceWorker.controller) {
+            resolve();
+            return;
+          }
+          navigator.serviceWorker.addEventListener('controllerchange', () => resolve(), { once: true });
+        });
+      }
+      return {
+        hasController: Boolean(navigator.serviceWorker.controller),
+        activeState: reg.active?.state ?? null,
+      };
+    });
+    expect(swActive.hasController).toBe(true);
+    expect(swActive.activeState).toBe('activated');
+
+    // Go completely offline and navigate to previously unvisited routes.
+    await context.setOffline(true);
+
+    const day54Res = await page.goto(`${server.baseUrl}/day/54`, { waitUntil: 'networkidle' });
+    expect(day54Res?.status()).toBe(200);
+    const complete54Btn = page.locator('button[data-complete-day="54"]');
+    await expect(complete54Btn).toBeVisible();
+    await complete54Btn.click();
+    await expect(complete54Btn).toHaveAttribute('aria-pressed', 'true');
+    expect(await page.evaluate(() => localStorage.getItem('trainer_completed_v1'))).toBe('[54]');
+
+    const week10Res = await page.goto(`${server.baseUrl}/week/10`, { waitUntil: 'networkidle' });
+    expect(week10Res?.status()).toBe(200);
+    await expect(page.locator('h1')).toContainText('Week 10');
+    await expect(page.locator('.week-subtitle')).toContainText('Days 64–70');
+    await expect(page.locator('main [data-week-progress="10"]')).toContainText('0 / 7');
+
+    const rootOfflineRes = await page.goto(`${server.baseUrl}/`, { waitUntil: 'networkidle' });
+    expect(rootOfflineRes?.status()).toBe(200);
+    expect(await page.evaluate(() => localStorage.getItem('trainer_completed_v1'))).toBe('[54]');
+    await expect(page.locator('main [data-day-cell="54"]')).toHaveAttribute('data-state', 'completed');
+    await expect(page.locator('main [data-progress-summary]')).toContainText('1 / 84');
+
+    await context.setOffline(false);
+    await assertCleanTelemetry(page, telemetry);
+
+    // Run rogue Trusted Types policy probe in an isolated page so strict telemetry remains clean above.
+    const isolatedPage = await context.newPage();
+    await isolatedPage.goto(`${server.baseUrl}/`, { waitUntil: 'networkidle' });
+    const rogueThrewTypeError = await isolatedPage.evaluate(() => {
+      const tt = (window as unknown as {
+        trustedTypes?: {
+          createPolicy: (name: string, rules: { createScriptURL: (u: string) => string }) => unknown;
+        };
+      }).trustedTypes;
+      if (!tt) return false;
+      try {
+        tt.createPolicy('rogue', { createScriptURL: (u: string) => u });
+        return false;
+      } catch (err) {
+        return err instanceof TypeError;
+      }
+    });
+    expect(rogueThrewTypeError).toBe(true);
+    await isolatedPage.close();
+
+    await context.close();
+  });
+
+  test('reveals progressive install button on beforeinstallprompt, meets 44x44, and consumes once', async ({ browser }) => {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await context.newPage();
+    const telemetry = await attachTelemetry(page);
+
+    await page.goto(`${server.baseUrl}/`, { waitUntil: 'networkidle' });
+
+    await page.locator('footer [data-switcher-open]').click();
+    const dialog = page.locator('#quick-switcher');
+    await expect(dialog).toHaveAttribute('open', '');
+
+    const installBtn = dialog.locator('[data-install-app]');
+    await expect(installBtn).toBeHidden();
+
+    await page.evaluate(() => {
+      const win = window as unknown as { __installPromptCalls?: number };
+      win.__installPromptCalls = 0;
+      const event = new Event('beforeinstallprompt', { cancelable: true }) as Event & {
+        prompt: () => Promise<void>;
+        userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+      };
+      event.prompt = async () => {
+        win.__installPromptCalls = (win.__installPromptCalls ?? 0) + 1;
+      };
+      event.userChoice = Promise.resolve({ outcome: 'accepted', platform: 'web' });
+      window.dispatchEvent(event);
+    });
+
+    await expect(installBtn).toBeVisible();
+    const box = await installBtn.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+
+    await installBtn.click();
+
+    await expect(installBtn).toBeHidden();
+    await expect(dialog.locator('[data-install-status]')).toContainText('accepted');
+    expect(await page.evaluate(() => (window as unknown as { __installPromptCalls?: number }).__installPromptCalls)).toBe(1);
 
     await assertCleanTelemetry(page, telemetry);
     await context.close();
