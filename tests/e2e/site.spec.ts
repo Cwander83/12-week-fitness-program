@@ -109,7 +109,7 @@ test.afterAll(async () => {
 test.describe('HTTP security headers & strict CSP serving', () => {
   test('serves exact vercel.ts security headers and immutable /_astro cache headers', async ({ page }) => {
     const telemetry = await attachTelemetry(page);
-    const response = await page.goto(`${server.baseUrl}/`);
+    const response = await page.goto(`${server.baseUrl}/`, { waitUntil: 'networkidle' });
     expect(response?.status()).toBe(200);
 
     const headers = response?.headers() ?? {};
@@ -152,7 +152,7 @@ test.describe('Responsive layout overflow across 320px, 390px, and 1280px', () =
       const telemetry = await attachTelemetry(page);
 
       for (const route of OVERFLOW_ROUTES) {
-        const res = await page.goto(`${server.baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
+        const res = await page.goto(`${server.baseUrl}${route}`, { waitUntil: 'networkidle' });
         expect(res?.status(), `Route ${route} should return 200`).toBe(200);
 
         const metrics = await page.evaluate(() => ({
