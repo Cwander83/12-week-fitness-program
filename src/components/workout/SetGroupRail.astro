@@ -1,0 +1,71 @@
+---
+import type { GroupBlock } from '../../types/workout';
+import ExerciseCard from './ExerciseCard.astro';
+
+export interface Props {
+  block: GroupBlock;
+}
+
+const { block } = Astro.props;
+
+const KIND_LABELS: Record<GroupBlock['groupKind'], string> = {
+  superset: 'Superset Pair',
+  'giant-set': '3-Way Giant Set',
+  circuit: 'Circuit',
+};
+
+const showNote = Boolean(block.note) && !block.label.includes(block.note ?? '');
+---
+
+<section class="group-block">
+  <div class="group-head">
+    <h3 class="group-title">{block.label}</h3>
+    <div class="group-badges">
+      <span class="badge badge-cobalt">{KIND_LABELS[block.groupKind]}</span>
+      {showNote && <span class="group-note">{block.note}</span>}
+    </div>
+  </div>
+
+  <div class="bracket-rail">
+    {block.exercises.map((exercise, i) => (
+      <ExerciseCard exercise={exercise} badgeCode={`A${i + 1}`} headingLevel="h4" />
+    ))}
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .group-block {
+      margin-block: 0.5rem;
+    }
+
+    .group-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.35rem 0.75rem;
+      margin-block-end: 0.45rem;
+    }
+
+    .group-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .group-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .group-note {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+  }
+</style>

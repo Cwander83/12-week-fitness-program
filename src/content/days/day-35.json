@@ -1,0 +1,169 @@
+{
+  "id": "day-35",
+  "dayNumber": 35,
+  "weekNumber": 5,
+  "phaseNumber": 2,
+  "title": "Back / Biceps / Abs",
+  "shortSplit": "Bk/Bi",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "back",
+    "biceps",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "giant-set",
+      "label": "Giant Set",
+      "exercises": [
+        {
+          "name": "Chins",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "16–20",
+              "rawText": "3 sets of 16–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Behind The Neck Pulldowns",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "12",
+              "rawText": "3 sets of 12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Cable Rows",
+          "prescriptions": [
+            {
+              "kind": "drop",
+              "sets": 3,
+              "reps": "12, 12",
+              "rawText": "3 drop sets of 12, 12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Bent Over Row",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "12",
+              "rawText": "3 sets of 12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Hyperextensions",
+          "prescriptions": [
+            {
+              "kind": "drop",
+              "sets": 3,
+              "reps": "12, 12",
+              "rawText": "3 drop sets of 12, 12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Alternating Dumbbell Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "20",
+              "rawText": "1 set of 20 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "8",
+              "rawText": "2 sets of 8 reps"
+            }
+          ]
+        },
+        {
+          "name": "Crossover Curls",
+          "prescriptions": [
+            {
+              "kind": "drop",
+              "sets": 3,
+              "reps": "8, 8",
+              "rawText": "3 drop sets of 8, 8 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Lying Bicep Curls",
+      "prescriptions": [
+        {
+          "kind": "drop",
+          "sets": 3,
+          "reps": "20, 20",
+          "rawText": "3 drop sets of 20, 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Weighted Sit-Ups",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–15",
+          "rawText": "3 sets of 10–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

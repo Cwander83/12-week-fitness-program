@@ -1,0 +1,116 @@
+{
+  "id": "day-80",
+  "dayNumber": 80,
+  "weekNumber": 12,
+  "phaseNumber": 3,
+  "title": "Shoulders / Calves / Abs",
+  "shortSplit": "1/2 DTP",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": true,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "half-dtp-set",
+      "label": "1/2 DTP Set",
+      "exercises": [
+        {
+          "name": "Dumbbell Shoulder Press",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "half-dtp-superset",
+      "label": "1/2 DTP Superset",
+      "exercises": [
+        {
+          "name": "Dumbbell Shoulder Press",
+          "repWave": [
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        },
+        {
+          "name": "Dumbbell Shrugs",
+          "repWave": [],
+          "standardSets": [
+            {
+              "kind": "working",
+              "sets": 5,
+              "reps": "20–25",
+              "rawText": "5 sets of 20–25 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Incline Lying Leg Raises",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Seated Calf Raises",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "day-54",
+  "dayNumber": 54,
+  "weekNumber": 8,
+  "phaseNumber": 2,
+  "title": "Biceps / Triceps",
+  "shortSplit": "DTP Arm",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "biceps",
+    "triceps"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": true,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "dtp-superset",
+      "label": "DTP Superset",
+      "exercises": [
+        {
+          "name": "Alternating Dumbbell Curls",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        },
+        {
+          "name": "3-Exercise Tricep Extensions (Alternate between Skullcrushers, Rockers, and Head Smackers)",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10,
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

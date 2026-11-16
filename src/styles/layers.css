@@ -1,0 +1,146 @@
+@layer reset, base, theme, components, utilities;
+
+@layer reset {
+  html,
+  body,
+  main,
+  article,
+  section,
+  aside,
+  header,
+  footer,
+  nav,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol,
+  li,
+  dl,
+  dt,
+  dd,
+  figure,
+  figcaption,
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td,
+  details,
+  summary,
+  dialog,
+  button,
+  a,
+  span,
+  strong,
+  em,
+  small,
+  code,
+  picture,
+  img,
+  svg {
+    box-sizing: border-box;
+  }
+
+  html {
+    margin: 0;
+    padding: 0;
+    scroll-padding-top: calc(var(--header-max-height, 4.25rem) + 0.75rem);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  img {
+    height: auto;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  [hidden] {
+    display: none;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .visually-hidden:focus,
+  .visually-hidden:focus-visible {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 100;
+    width: auto;
+    height: auto;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    background-color: var(--vermilion);
+    color: var(--vermilion-ink);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-xs, 2px);
+  }
+
+  .sr-only-mobile {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .sr-only-mobile {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip-path: none;
+      white-space: normal;
+    }
+  }
+}

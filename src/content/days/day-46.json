@@ -1,0 +1,115 @@
+{
+  "id": "day-46",
+  "dayNumber": 46,
+  "weekNumber": 7,
+  "phaseNumber": 2,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Extensions",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "20 (1.5 reps)",
+          "rawText": "3 sets of 20 \"One And A Half\" reps",
+          "notes": "\"One And A Half\" reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Partial Leg Extensions",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "50",
+          "rawText": "2 sets of 50 reps (dropping weight every 10 reps)",
+          "notes": "dropping weight every 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Press",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "60",
+          "rawText": "2 sets of 60 reps (adjust feet position every 20 reps)",
+          "notes": "adjust feet position every 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Walking Lunges",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "to failure",
+          "rawText": "2 sets to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Machine Stiff-Leg Deadlift",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets of 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

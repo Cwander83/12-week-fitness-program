@@ -1,0 +1,94 @@
+{
+  "id": "day-14",
+  "dayNumber": 14,
+  "weekNumber": 2,
+  "phaseNumber": 1,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Leg Extensions",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "20 full and partial",
+              "rawText": "3 sets to failure in 20 full and partial reps"
+            }
+          ]
+        },
+        {
+          "name": "Seated Leg Curl",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 3,
+              "reps": "12–15",
+              "rawText": "3 sets to failure in 12–15 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Hack Squat",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 4,
+              "reps": "50",
+              "rawText": "4 sets to failure in 50 reps"
+            }
+          ]
+        },
+        {
+          "name": "Standing Leg Curl",
+          "prescriptions": [
+            {
+              "kind": "failure",
+              "sets": 4,
+              "reps": "18–20",
+              "rawText": "4 sets to failure in 18–20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

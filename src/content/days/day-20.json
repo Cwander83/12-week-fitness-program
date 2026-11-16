@@ -1,0 +1,112 @@
+{
+  "id": "day-20",
+  "dayNumber": 20,
+  "weekNumber": 3,
+  "phaseNumber": 1,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Extensions",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "100 total",
+          "rawText": "1 drop set of 100 total reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "rest-pause",
+          "sets": 3,
+          "reps": "30",
+          "rawText": "3 rest-pause sets of 30 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Standing Hamstring Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "20",
+          "rawText": "3 sets of 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hack Squats",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "rest-pause",
+          "sets": 3,
+          "reps": "30",
+          "rawText": "3 rest-pause sets of 30 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "week-02",
+  "weekNumber": 2,
+  "phaseNumber": 1,
+  "phaseTitle": "Hypertrophy Foundation",
+  "weekTheme": "Drop Sets & Giant Sets",
+  "startDay": 8,
+  "endDay": 14,
+  "workoutDaysCount": 5,
+  "restDaysCount": 2,
+  "cardioSummary": "20 min pre & post",
+  "twistsSummary": "None",
+  "days": [
+    {
+      "dayNumber": 8,
+      "title": "Chest / Triceps",
+      "shortSplit": "Ch/Tri",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 9,
+      "title": "Rest (Cardio AM/PM)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 10,
+      "title": "Shoulders",
+      "shortSplit": "Shld",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 11,
+      "title": "Calves / Abs",
+      "shortSplit": "Clv/Ab",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 12,
+      "title": "Back / Biceps",
+      "shortSplit": "Bk/Bi",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 13,
+      "title": "Rest (Daily Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 14,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

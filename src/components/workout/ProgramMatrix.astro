@@ -1,0 +1,135 @@
+---
+import type { WeekData } from '../../types/workout';
+
+export interface Props {
+  weeks: WeekData[];
+}
+
+const { weeks } = Astro.props;
+---
+
+<section class="matrix-deferred reveal-on-scroll" aria-labelledby="matrix-heading">
+  <div class="section-head">
+    <h2 id="matrix-heading" class="display-face">84-Day Program Matrix</h2>
+    <div class="matrix-legend" aria-label="Matrix key">
+      <span class="legend-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+        <span>Done</span>
+      </span>
+      <span class="legend-item">
+        <span class="swatch swatch-next" aria-hidden="true"></span>
+        <span>Next</span>
+      </span>
+      <span class="legend-item">
+        <span class="swatch swatch-dtp" aria-hidden="true"></span>
+        <span>DTP</span>
+      </span>
+      <span class="legend-item">
+        <span class="swatch swatch-rest" aria-hidden="true"></span>
+        <span>Rest</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="matrix-scroll">
+    <div class="matrix-grid" role="region" aria-label="12-Week by 7-Day Program Grid">
+      {weeks.map((week) => (
+        <div class="matrix-week-row">
+          <a
+            href={`/week/${week.weekNumber}`}
+            class="matrix-week-lbl tabular"
+            title={`Week ${week.weekNumber}: ${week.weekTheme}`}
+          >
+            <span class="week-code">W{String(week.weekNumber).padStart(2, '0')}</span>
+            <span class="week-count" data-week-progress={week.weekNumber} data-format="short">
+              0/7
+            </span>
+          </a>
+
+          {week.days.map((d) => {
+            const kind = d.hasDtp ? 'dtp' : d.isRestDay ? 'rest' : 'train';
+            return (
+              <a
+                href={`/day/${d.dayNumber}`}
+                class="matrix-cell tabular"
+                data-day-cell={d.dayNumber}
+                data-kind={kind}
+                data-state="pending"
+                title={`Day ${d.dayNumber}: ${d.title}`}
+              >
+                <span class="cell-top">
+                  <span class="cell-num">D{String(d.dayNumber).padStart(2, '0')}</span>
+                  <span class="cell-icon cell-icon-check" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <span class="cell-icon cell-icon-next" aria-hidden="true">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="cell-split">{d.shortSplit}</span>
+                <span class="cell-next-badge" aria-hidden="true">NEXT</span>
+              </a>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .matrix-legend {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+
+    .swatch-next {
+      background-color: var(--vermilion);
+    }
+
+    .swatch-dtp {
+      background-color: var(--surface);
+      border: 1px solid var(--vermilion);
+    }
+
+    .swatch-rest {
+      background-color: var(--band);
+      border: 1px solid var(--control-border);
+    }
+
+    .week-code {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .week-count {
+      color: var(--muted);
+      line-height: 1.2;
+    }
+  }
+</style>

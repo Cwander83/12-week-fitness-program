@@ -1,0 +1,23 @@
+# Dependencies & caches
+node_modules/
+.astro/
+.vercel/
+
+# Build output
+dist/
+
+# Planning & local workspace worktrees
+plan/
+sheepshead/
+
+# Test & verification artifacts
+test-results/
+playwright-report/
+coverage/
+
+# OS & editor files
+.DS_Store
+*.tsbuildinfo
+.env
+.env.*
+!.env.example

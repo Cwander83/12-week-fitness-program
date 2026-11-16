@@ -1,0 +1,142 @@
+{
+  "id": "day-40",
+  "dayNumber": 40,
+  "weekNumber": 6,
+  "phaseNumber": 2,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Leg Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "22–25",
+              "rawText": "3 sets of 22–25 reps"
+            }
+          ]
+        },
+        {
+          "name": "Squats",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "8–10",
+              "rawText": "3 sets of 8–10 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Seated Leg Curl",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "20",
+              "rawText": "3 sets of 20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Standing Leg Curl",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "8–10 slow + 10 quick",
+              "rawText": "3 sets of 8–10 slow reps followed by 10 quick reps",
+              "notes": "8–10 slow reps followed by 10 quick reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hack Squats",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "20–30",
+          "rawText": "3 sets of 20–30 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset (Alternating Legs)",
+      "note": "Alternating Legs",
+      "exercises": [
+        {
+          "name": "Unilateral Leg Extension",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "20",
+              "rawText": "1 set of 20 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "10",
+              "rawText": "1 set of 10 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "5",
+              "rawText": "1 set of 5 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

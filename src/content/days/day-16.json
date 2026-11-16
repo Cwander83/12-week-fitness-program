@@ -1,0 +1,140 @@
+{
+  "id": "day-16",
+  "dayNumber": 16,
+  "weekNumber": 3,
+  "phaseNumber": 1,
+  "title": "Back / Biceps",
+  "shortSplit": "Bk/Bi",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "back",
+    "biceps"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Grip Pulldown",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "8–10",
+          "rawText": "3 sets to failure in 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Lat Pulldown",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "12–15",
+          "rawText": "3 sets to failure in 12–15 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Dumbbell Row",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "15–17",
+          "rawText": "3 sets to failure in 15–17 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Close Grip Pullups With Legs Elevated",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Alternating Dumbbell Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "12–14",
+          "rawText": "3 sets to failure in 12–14 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Preacher Dumbbell Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "12–14",
+          "rawText": "3 sets to failure in 12–14 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Spider Curls",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "20",
+          "rawText": "3 sets to failure in 20 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

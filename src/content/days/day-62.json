@@ -1,0 +1,190 @@
+{
+  "id": "day-62",
+  "dayNumber": 62,
+  "weekNumber": 9,
+  "phaseNumber": 3,
+  "title": "Biceps / Triceps",
+  "shortSplit": "Bi/Tri",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "biceps",
+    "triceps"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Machine Preacher Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "10–12",
+              "rawText": "2 sets of 10–12 reps"
+            },
+            {
+              "kind": "triple-drop",
+              "sets": 1,
+              "reps": "10–12",
+              "rawText": "1 triple drop set of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Dips",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "10–12",
+              "rawText": "2 sets of 10–12 reps"
+            },
+            {
+              "kind": "triple-drop",
+              "sets": 1,
+              "reps": "10–12",
+              "rawText": "1 triple drop set of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Tricep Rope Pushdowns",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "12",
+              "rawText": "1 set of 12 reps"
+            },
+            {
+              "kind": "drop",
+              "sets": 1,
+              "reps": "12",
+              "rawText": "1 drop set of 12 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "12",
+              "rawText": "1 set of 12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Barbell Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "12",
+              "rawText": "1 set of 12 reps"
+            },
+            {
+              "kind": "drop",
+              "sets": 1,
+              "reps": "12",
+              "rawText": "1 drop set of 12 reps"
+            },
+            {
+              "kind": "working",
+              "sets": 1,
+              "reps": "12",
+              "rawText": "1 set of 12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Close Grip Bench Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Hammer Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Standing Cable Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "12",
+              "rawText": "3 sets of 12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Tricep Cable Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "12",
+              "rawText": "3 sets of 12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

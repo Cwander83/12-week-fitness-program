@@ -1,0 +1,23 @@
+{
+  "id": "day-22",
+  "dayNumber": 22,
+  "weekNumber": 4,
+  "phaseNumber": 1,
+  "title": "Rest",
+  "shortSplit": "Rest",
+  "isRestDay": true,
+  "restMode": "full-rest",
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "rest",
+      "mode": "full-rest",
+      "items": [
+        "Rest"
+      ]
+    }
+  ]
+}

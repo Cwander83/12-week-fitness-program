@@ -1,0 +1,185 @@
+{
+  "id": "day-39",
+  "dayNumber": 39,
+  "weekNumber": 6,
+  "phaseNumber": 2,
+  "title": "Chest / Triceps / Abs",
+  "shortSplit": "Ch/Tri",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "triceps",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "shoulders"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 5,
+          "reps": "8–10",
+          "rawText": "5 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "6–8",
+          "rawText": "2 sets of 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Decline Bench Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 1,
+          "reps": "6–8",
+          "rawText": "1 triple drop set of 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 sets of 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 drop set of 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Cable Crossovers",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 sets of 10–12 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "10–12",
+          "rawText": "1 drop set of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Lying Tricep Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        },
+        {
+          "name": "Lying Pullovers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "8–10",
+              "rawText": "3 sets of 8–10 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Overhead Dumbbell Extension",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Bench Dips",
+      "prescriptions": [
+        {
+          "kind": "drop",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 drop sets of 10–12 reps + partial reps until failure",
+          "notes": "+ partial reps until failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Reverse Crunch",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "15",
+          "rawText": "3 sets of 15 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

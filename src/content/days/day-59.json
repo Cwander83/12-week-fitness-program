@@ -1,0 +1,122 @@
+{
+  "id": "day-59",
+  "dayNumber": 59,
+  "weekNumber": 9,
+  "phaseNumber": 3,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 1,
+          "reps": "20, 10, 10",
+          "rawText": "1 triple drop set of 20, 10, 10 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Hack Squats",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "30",
+              "rawText": "2 sets of 30 reps"
+            }
+          ]
+        },
+        {
+          "name": "Squats",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "10",
+              "rawText": "2 sets of 10 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Standing Hamstring Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "16–20",
+              "rawText": "2 sets of 16–20 reps"
+            },
+            {
+              "kind": "triple-drop",
+              "sets": 1,
+              "reps": "16–20",
+              "rawText": "1 triple drop set of 16–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Stiff Legged Dumbbell Deadlift",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "10–12",
+              "rawText": "3 sets of 10–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "id": "day-08",
+  "dayNumber": 8,
+  "weekNumber": 2,
+  "phaseNumber": 1,
+  "title": "Chest / Triceps",
+  "shortSplit": "Ch/Tri",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "shoulders"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Flat Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "6–8",
+          "rawText": "2 sets to failure in 6–8 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Flat Bench Flyes",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 sets to failure in 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Cable Flyes",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 sets to failure in 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Cable Crossovers",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 sets to failure in 8–10 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Tricep Cable Pushdowns",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "16–18",
+          "rawText": "2 sets to failure in 16–18 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Cable Pushdowns",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "16–18",
+          "rawText": "2 sets to failure in 16–18 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "to failure",
+          "rawText": "1 drop set to failure"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "giant-set",
+      "label": "Giant Set",
+      "exercises": [
+        {
+          "name": "Head Smackers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "7",
+              "rawText": "3 sets of 7 reps"
+            }
+          ]
+        },
+        {
+          "name": "Skull Crushers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "7",
+              "rawText": "3 sets of 7 reps"
+            }
+          ]
+        },
+        {
+          "name": "Rockers",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "7",
+              "rawText": "3 sets of 7 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "day-53",
+  "dayNumber": 53,
+  "weekNumber": 8,
+  "phaseNumber": 2,
+  "title": "Back / Chest",
+  "shortSplit": "Bk/Ch",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "back"
+  ],
+  "secondaryMuscles": [
+    "shoulders",
+    "triceps",
+    "glutes",
+    "biceps"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Pull-Ups",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "16–20",
+              "rawText": "3 sets of 16–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Dumbbell Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "8–10",
+              "rawText": "2 sets of 8–10 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Cable Rows",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "12–16",
+              "rawText": "3 sets of 12–16 reps"
+            }
+          ]
+        },
+        {
+          "name": "Incline Dumbbell Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "8–12",
+              "rawText": "2 sets of 8–12 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Reverse Grip Cable Pulldowns",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "8–10",
+              "rawText": "2 sets of 8–10 reps"
+            }
+          ]
+        },
+        {
+          "name": "Incline Flyes",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "8–10",
+              "rawText": "2 sets of 8–10 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Partial Deadlift",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 1,
+          "reps": "30",
+          "rawText": "1 set of 30 reps"
+        },
+        {
+          "kind": "drop",
+          "sets": 1,
+          "reps": "30",
+          "rawText": "1 drop set of 30 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+---
+import { Picture } from 'astro:assets';
+import phase1Img from '../../assets/photos/phase-1.png';
+import phase2Img from '../../assets/photos/phase-2.png';
+import phase3Img from '../../assets/photos/phase-3.png';
+
+const phases = [
+  {
+    number: 1,
+    title: 'Phase I — Hypertrophy Foundation',
+    span: 'Weeks 1–4 · Days 1–28',
+    cardio: '20 min pre & post',
+    twists: 'Week 3: 150 pre & post',
+    copy: 'High-volume straight sets taken to failure, 21s, rest-pause work, and Week 4 Triple Drop Sets establishing metabolic capacity.',
+    ctaLabel: 'Explore Week 1',
+    href: '/week/1',
+    image: phase1Img,
+    alt: 'Heavy knurled dumbbell rack and incline bench illuminated by directional morning gym light',
+  },
+  {
+    number: 2,
+    title: 'Phase II — High-Density Supersets',
+    span: 'Weeks 5–8 · Days 29–56',
+    cardio: '25 min pre & post',
+    twists: '150 pre & post',
+    copy: 'Antagonistic supersets, 3-way giant sets, 1.5-rep extensions, pyramid progressions, and the Day 54 full DTP Superset launch.',
+    ctaLabel: 'Explore Week 5',
+    href: '/week/5',
+    image: phase2Img,
+    alt: 'Dual steel cable crossover tower and dip bars in sharp directional contrast',
+  },
+  {
+    number: 3,
+    title: 'Phase III — Peak DTP Shock',
+    span: 'Weeks 9–12 · Days 57–84',
+    cardio: '25 min pre & post',
+    twists: '150 pre & post',
+    copy: 'Full 10-set 50-40-30-20-10-10-20-30-40-50 DTP supersets, 1/2 DTP waves, and 4-way calf and abdominal circuits.',
+    ctaLabel: 'Explore Week 9',
+    href: '/week/9',
+    image: phase3Img,
+    alt: '45-degree leg press sled loaded with calibrated black steel plates in architectural daylight',
+  },
+] as const;
+---
+
+<section class="reveal-on-scroll" aria-labelledby="phases-heading">
+  <div class="section-head">
+    <h2 id="phases-heading" class="display-face">Three-Phase Progression</h2>
+    <span class="section-meta tabular">Days 1–84 · Periodized Arc</span>
+  </div>
+
+  <div class="phase-list">
+    {phases.map((phase) => (
+      <article class="phase-row">
+        <div class="phase-thumb">
+          <Picture
+            src={phase.image}
+            formats={['avif', 'webp']}
+            widths={[480, 800]}
+            sizes="(max-width: 768px) 100vw, 320px"
+            loading="lazy"
+            decoding="async"
+            alt={phase.alt}
+          />
+        </div>
+
+        <div>
+          <h3 class="phase-title">{phase.title}</h3>
+          <div class="phase-span tabular">{phase.span}</div>
+          <p class="phase-desc">{phase.copy}</p>
+        </div>
+
+        <div class="phase-specs tabular">
+          <div class="phase-spec">
+            Cardio: <strong>{phase.cardio}</strong>
+          </div>
+          <div class="phase-spec">
+            Twists: <strong>{phase.twists}</strong>
+          </div>
+          <a href={phase.href} class="btn-hit btn-outline">
+            <span>{phase.ctaLabel}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .phase-spec {
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    .phase-spec strong {
+      color: var(--ink);
+    }
+  }
+</style>

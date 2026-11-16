@@ -1,0 +1,138 @@
+---
+import type { ExerciseBlock, ExerciseEntry, SetKind } from '../../types/workout';
+
+export interface Props {
+  exercise: ExerciseEntry | ExerciseBlock;
+  index?: number;
+  badgeCode?: string;
+  headingLevel?: 'h3' | 'h4';
+}
+
+const { exercise, index, badgeCode, headingLevel = 'h3' } = Astro.props;
+
+const KIND_META: Record<SetKind, { label: string; cls: string }> = {
+  warmup: { label: 'Warm-Up', cls: 'badge-warmup' },
+  working: { label: 'Working', cls: 'badge-working' },
+  failure: { label: 'To Failure', cls: 'badge-failure' },
+  drop: { label: 'Drop Set', cls: 'badge-drop' },
+  'triple-drop': { label: 'Triple Drop', cls: 'badge-drop' },
+  'rest-pause': { label: 'Rest-Pause', cls: 'badge-drop' },
+  burnout: { label: 'Burnout', cls: 'badge-failure' },
+  'pyramid-step': { label: 'Pyramid', cls: 'badge-dtp' },
+};
+
+const showModifier =
+  Boolean(exercise.modifier) && !exercise.name.includes(exercise.modifier ?? '');
+const Heading = headingLevel === 'h4' ? 'h4' : 'h3';
+---
+
+<div class="ex-card">
+  <div class="ex-head">
+    <div class="ex-title-group">
+      {badgeCode ? (
+        <span class="badge badge-cobalt-fill tabular">{badgeCode}</span>
+      ) : typeof index === 'number' ? (
+        <span class="ex-index tabular">{String(index + 1).padStart(2, '0')}</span>
+      ) : null}
+      <Heading class="ex-name">
+        {exercise.name}
+        {showModifier && <span class="badge badge-warmup">{exercise.modifier}</span>}
+      </Heading>
+    </div>
+  </div>
+
+  <ul class="ex-prescriptions tabular">
+    {exercise.prescriptions.map((p) => {
+      const meta = KIND_META[p.kind];
+      const showNotes = Boolean(p.notes) && !p.rawText.includes(p.notes ?? '');
+      return (
+        <li class="rx-item">
+          <div class="rx-line">
+            <span class={`badge ${meta.cls}`}>{meta.label}</span>
+            <span class:list={['rx-text', { 'rx-strong': p.kind !== 'warmup' }]}>
+              {p.rawText}
+            </span>
+          </div>
+          {showNotes && <p class="rx-note">{p.notes}</p>}
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+<style>
+  @layer components {
+    .ex-index {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    .ex-name {
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    @media (min-width: 48rem) {
+      .ex-name {
+        font-size: 1rem;
+      }
+    }
+
+    .ex-prescriptions {
+      list-style: none;
+      margin: 0.35rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rx-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .rx-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+
+    .rx-text {
+      color: var(--muted);
+    }
+
+    .rx-strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .rx-note {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      padding-inline-start: 0.25rem;
+    }
+
+    .badge-working {
+      border: 1px solid var(--control-border);
+      color: var(--ink);
+      background-color: var(--band);
+    }
+  }
+</style>

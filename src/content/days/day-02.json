@@ -1,0 +1,114 @@
+{
+  "id": "day-02",
+  "dayNumber": 2,
+  "weekNumber": 1,
+  "phaseNumber": 1,
+  "title": "Chest / Triceps",
+  "shortSplit": "Ch/Tri",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "chest",
+    "triceps"
+  ],
+  "secondaryMuscles": [
+    "shoulders"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Flat Dumbbell Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 3,
+          "reps": "6–10",
+          "rawText": "3 warm-up sets of 6–10 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "6–10",
+          "rawText": "2 sets to failure in 6–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Incline Flyes",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 sets to failure in 8–10 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Straight Arm Pullover",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Rope Triceps Pushdown",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Lying Cable Extensions",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Overhead Dumbbell Extension",
+      "prescriptions": [
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

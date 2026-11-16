@@ -1,0 +1,66 @@
+{
+  "id": "week-10",
+  "weekNumber": 10,
+  "phaseNumber": 3,
+  "phaseTitle": "Peak DTP Shock",
+  "weekTheme": "Dual DTP Supersets & 4-Way Circuit",
+  "startDay": 64,
+  "endDay": 70,
+  "workoutDaysCount": 5,
+  "restDaysCount": 2,
+  "cardioSummary": "25 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 64,
+      "title": "Legs",
+      "shortSplit": "DTP Leg",
+      "isRestDay": false,
+      "hasDtp": true
+    },
+    {
+      "dayNumber": 65,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 66,
+      "title": "Chest / Back",
+      "shortSplit": "DTP C/B",
+      "isRestDay": false,
+      "hasDtp": true
+    },
+    {
+      "dayNumber": 67,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 68,
+      "title": "Legs / Shoulders",
+      "shortSplit": "Lg/Sh",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 69,
+      "title": "Abs / Calves",
+      "shortSplit": "Ab/Clv",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 70,
+      "title": "Back / Biceps / Triceps",
+      "shortSplit": "Bk/Arm",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

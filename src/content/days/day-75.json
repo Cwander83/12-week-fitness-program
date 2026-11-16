@@ -1,0 +1,108 @@
+{
+  "id": "day-75",
+  "dayNumber": 75,
+  "weekNumber": 11,
+  "phaseNumber": 3,
+  "title": "Shoulders / Calves / Abs",
+  "shortSplit": "DTP Sh",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "shoulders",
+    "calves",
+    "abs"
+  ],
+  "secondaryMuscles": [
+    "triceps"
+  ],
+  "hasDtp": true,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "dtp",
+      "variant": "dtp-set",
+      "label": "DTP Set",
+      "exercises": [
+        {
+          "name": "Seated Military Press Behind the Head",
+          "repWave": [
+            50,
+            40,
+            30,
+            20,
+            10
+          ]
+        },
+        {
+          "name": "Seated Military Press",
+          "repWave": [
+            10,
+            20,
+            30,
+            40,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "giant-set",
+      "label": "Giant Set",
+      "exercises": [
+        {
+          "name": "Upright Barbell Row",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Seated Calf Press",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        },
+        {
+          "name": "Weighted Sit-Ups",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "25 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 25 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

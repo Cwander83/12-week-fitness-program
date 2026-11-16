@@ -1,0 +1,120 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/barlow-condensed/800.css';
+import '../styles/layers.css';
+import '../styles/tokens.css';
+import '../styles/typography.css';
+import '../styles/motion.css';
+import '../styles/layout.css';
+
+import { getCollection } from 'astro:content';
+import ShrinkingHeader from '../components/chrome/ShrinkingHeader.astro';
+import ThumbQuickSwitcher from '../components/chrome/ThumbQuickSwitcher.astro';
+import DayPager from '../components/chrome/DayPager.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  currentWeek?: number;
+  currentDay?: number;
+  switcherLabel?: string;
+  prevHref?: string;
+  prevLabel?: string;
+  nextHref?: string;
+  nextLabel?: string;
+}
+
+const {
+  title,
+  description = '84-day structured hypertrophy and DTP training program built for mobile gym-floor legibility.',
+  currentWeek,
+  currentDay,
+  switcherLabel,
+  prevHref,
+  prevLabel,
+  nextHref,
+  nextLabel,
+} = Astro.props;
+
+const allDays = (await getCollection('days')).sort(
+  (a, b) => a.data.dayNumber - b.data.dayNumber
+);
+
+const dayManifest: Record<number, { title: string; weekNumber: number }> = {};
+for (const entry of allDays) {
+  dayManifest[entry.data.dayNumber] = {
+    title: entry.data.title,
+    weekNumber: entry.data.weekNumber,
+  };
+}
+
+const manifestJson = JSON.stringify(dayManifest).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23111214'/%3E%3Crect x='3' y='7' width='3' height='10' fill='%23FAFAFA'/%3E%3Crect x='7' y='5' width='2.5' height='14' fill='%23FAFAFA'/%3E%3Crect x='9.5' y='11' width='5' height='2' fill='%23D9381E'/%3E%3Crect x='14.5' y='5' width='2.5' height='14' fill='%23FAFAFA'/%3E%3Crect x='18' y='7' width='3' height='10' fill='%23FAFAFA'/%3E%3C/svg%3E"
+    />
+    <script is:inline>try{const s=localStorage.getItem("color-scheme");if(s==="light"||s==="dark"){document.head.querySelector('meta[name="color-scheme"]')?.setAttribute("content",s)}}catch{}</script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <a href="#main-content" class="visually-hidden">Skip to main content</a>
+
+    <ShrinkingHeader title={title} currentWeek={currentWeek} currentDay={currentDay} />
+
+    <main id="main-content" class="container-main">
+      <slot />
+    </main>
+
+    <footer class="thumb-bar">
+      <div class="thumb-inner">
+        <DayPager
+          prevHref={prevHref}
+          prevLabel={prevLabel}
+          nextHref={nextHref}
+          nextLabel={nextLabel}
+        >
+          <button
+            type="button"
+            class="thumb-pill tabular"
+            data-switcher-open
+            aria-haspopup="dialog"
+            aria-controls="quick-switcher"
+          >
+            <span class="thumb-pill-text" data-thumb-label>
+              {switcherLabel ?? '84-Day Atlas — Switch'}
+            </span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="18 15 12 9 6 15" />
+            </svg>
+          </button>
+        </DayPager>
+      </div>
+    </footer>
+
+    <ThumbQuickSwitcher currentWeek={currentWeek} currentDay={currentDay} />
+
+    <script type="application/json" id="program-day-manifest" set:html={manifestJson} />
+    <script>import '../scripts/client-init';</script>
+  </body>
+</html>

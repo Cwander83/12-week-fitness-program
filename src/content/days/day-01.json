@@ -1,0 +1,126 @@
+{
+  "id": "day-01",
+  "dayNumber": 1,
+  "weekNumber": 1,
+  "phaseNumber": 1,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Press",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "reps": "10–12",
+          "rawText": "3–5 warm-up sets of 10–12 reps",
+          "notes": "3–5 sets"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hamstring Curl",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "15",
+          "rawText": "2 warm-up sets of 15 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Lying Hamstring Curl",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 warm-up sets of 10–12 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Extension",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "15–20",
+          "rawText": "2 warm-up sets of 15–20 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 sets to failure in 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Hack Squats",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "15–20",
+          "rawText": "2 warm-up sets of 15–20 reps"
+        },
+        {
+          "kind": "failure",
+          "sets": 3,
+          "reps": "15–30",
+          "rawText": "3 sets to failure in 15–30 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

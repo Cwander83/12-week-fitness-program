@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import { Picture } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhaseAtlas from '../components/workout/PhaseAtlas.astro';
+import ProgramMatrix from '../components/workout/ProgramMatrix.astro';
+import ProtocolGlossary from '../components/workout/ProtocolGlossary.astro';
+import heroImg from '../assets/photos/hero.png';
+
+const weekEntries = await getCollection('weeks');
+const weeks = weekEntries
+  .map((entry) => entry.data)
+  .sort((a, b) => a.weekNumber - b.weekNumber);
+---
+
+<BaseLayout
+  title="12-Week Hardcore Daily Trainer"
+  description="Eighty-four daily training sheets across 12 weeks and 3 phases, progressing from straight failure sets and triple drops into 10-set DTP waves."
+  switcherLabel="84-Day Atlas — Switch"
+  nextHref="/day/1"
+  nextLabel="Day 1"
+>
+  <article>
+    <section class="hero-grid" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <h1 id="hero-heading" class="display-face">12-Week Hardcore Daily Trainer</h1>
+        <p class="hero-deck">
+          Eighty-four daily training sheets engineered for gym-floor legibility—progressing from straight failure sets and triple drops into full 10-set DTP rep waves.
+        </p>
+
+        <div class="cta-row">
+          <a href="/day/1" class="btn-hit btn-primary tabular" data-hero-cta>
+            <span data-hero-cta-label>Start Day 1 — Legs</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+          <a href="/day/1" class="btn-hit btn-outline tabular">
+            <span>Inspect Day 1</span>
+          </a>
+        </div>
+
+        <div class="progress-box tabular" aria-label="Program completion progress">
+          <div class="progress-head">
+            <strong data-progress-summary>0 / 84 Days Complete · 0%</strong>
+            <span class="progress-next" data-progress-next>Next: Week 1 · Day 1</span>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="84-day program completion"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="84"
+          >
+            <div class="progress-fill" data-progress-bar style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="spec-trio tabular">
+          <div class="spec-cell">
+            <div class="spec-val">12 Weeks</div>
+            <div class="spec-lbl">Structured Split</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-val">84 Days</div>
+            <div class="spec-lbl">Verbatim Sheets</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-val">3 Phases</div>
+            <div class="spec-lbl">DTP Periodization</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <Picture
+          src={heroImg}
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1280]}
+          sizes="(max-width: 1024px) 100vw, 600px"
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync"
+          alt="Chalked Olympic barbell knurling and calibrated black steel plates with a single matte signal-vermilion collar resting on a gym platform in raking daylight"
+        />
+      </div>
+    </section>
+
+    <PhaseAtlas />
+    <ProgramMatrix weeks={weeks} />
+    <ProtocolGlossary />
+  </article>
+</BaseLayout>
+
+<style>
+  @layer components {
+    .progress-next {
+      font-weight: 700;
+      color: var(--vermilion-text);
+    }
+  }
+</style>

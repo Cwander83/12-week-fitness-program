@@ -1,0 +1,140 @@
+{
+  "id": "day-23",
+  "dayNumber": 23,
+  "weekNumber": 4,
+  "phaseNumber": 1,
+  "title": "Back / Biceps",
+  "shortSplit": "Bk/Bi",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "back",
+    "biceps"
+  ],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Grip Hammer Pulldowns",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 2,
+          "reps": "8–10",
+          "rawText": "2 warm-up sets of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Bent Over Barbell Rows",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Single-Arm Rows",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 2,
+          "reps": "10–12",
+          "rawText": "2 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Reverse Grip Pulldowns",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "10–12",
+          "rawText": "3 sets of 10–12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Preacher Curls",
+      "prescriptions": [
+        {
+          "kind": "warmup",
+          "sets": 1,
+          "reps": "8–10",
+          "rawText": "1 warm-up set of 8–10 reps"
+        },
+        {
+          "kind": "triple-drop",
+          "sets": 4,
+          "reps": "12, 12, 12",
+          "rawText": "4 triple drop sets of 12, 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "EZ Bar Curls",
+      "prescriptions": [
+        {
+          "kind": "triple-drop",
+          "sets": 4,
+          "reps": "12, 12, 12",
+          "rawText": "4 triple drop sets of 12, 12, 12 reps"
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "twists": "1 set of 150 reps",
+      "rawItems": [
+        "Cardio: 20 minutes",
+        "Twists: 1 set of 150 reps"
+      ]
+    }
+  ]
+}

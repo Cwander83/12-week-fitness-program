@@ -1,0 +1,67 @@
+{
+  "id": "week-07",
+  "weekNumber": 7,
+  "phaseNumber": 2,
+  "phaseTitle": "High-Density Supersets",
+  "weekTheme": "1.5 Reps & 7-Set Finishers",
+  "startDay": 43,
+  "endDay": 49,
+  "workoutDaysCount": 4,
+  "restDaysCount": 3,
+  "cardioSummary": "25 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 43,
+      "title": "Shoulders / Calves / Abs",
+      "shortSplit": "Sh/Clv",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 44,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 45,
+      "title": "Chest / Triceps",
+      "shortSplit": "Ch/Tri",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 46,
+      "title": "Legs",
+      "shortSplit": "Legs",
+      "isRestDay": false,
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 47,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 48,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 49,
+      "title": "Back / Biceps",
+      "shortSplit": "Bk/Bi",
+      "isRestDay": false,
+      "hasDtp": false
+    }
+  ]
+}

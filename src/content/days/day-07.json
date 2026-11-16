@@ -1,0 +1,136 @@
+{
+  "id": "day-07",
+  "dayNumber": 7,
+  "weekNumber": 1,
+  "phaseNumber": 1,
+  "title": "Legs",
+  "shortSplit": "Legs",
+  "isRestDay": false,
+  "primaryMuscles": [
+    "quads",
+    "hamstrings"
+  ],
+  "secondaryMuscles": [
+    "glutes"
+  ],
+  "hasDtp": false,
+  "hasSupersetOrGiant": true,
+  "blocks": [
+    {
+      "type": "bookend",
+      "slot": "pre",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Leg Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "30",
+              "rawText": "2 sets of 30 reps"
+            }
+          ]
+        },
+        {
+          "name": "Hamstring Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "20",
+              "rawText": "2 sets of 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset",
+      "exercises": [
+        {
+          "name": "Walking Lunges",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "40 steps",
+              "rawText": "3 sets of 40 steps"
+            }
+          ]
+        },
+        {
+          "name": "Standing Hamstring Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 3,
+              "reps": "15–20",
+              "rawText": "3 sets of 15–20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "name": "Leg Press",
+      "prescriptions": [
+        {
+          "kind": "working",
+          "sets": 3,
+          "reps": "50",
+          "rawText": "3 sets of 50 reps"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "groupKind": "superset",
+      "label": "Superset (Repeat Exercises 1 & 2)",
+      "note": "Repeat Exercises 1 & 2",
+      "exercises": [
+        {
+          "name": "Leg Extensions",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "30",
+              "rawText": "2 sets of 30 reps"
+            }
+          ]
+        },
+        {
+          "name": "Hamstring Curls",
+          "prescriptions": [
+            {
+              "kind": "working",
+              "sets": 2,
+              "reps": "20",
+              "rawText": "2 sets of 20 reps"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bookend",
+      "slot": "post",
+      "cardio": "20 minutes",
+      "rawItems": [
+        "Cardio: 20 minutes"
+      ]
+    }
+  ]
+}

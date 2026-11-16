@@ -1,0 +1,23 @@
+{
+  "id": "day-30",
+  "dayNumber": 30,
+  "weekNumber": 5,
+  "phaseNumber": 2,
+  "title": "Rest (Cardio AM/PM)",
+  "shortSplit": "Cardio",
+  "isRestDay": true,
+  "restMode": "active-recovery",
+  "primaryMuscles": [],
+  "secondaryMuscles": [],
+  "hasDtp": false,
+  "hasSupersetOrGiant": false,
+  "blocks": [
+    {
+      "type": "rest",
+      "mode": "active-recovery",
+      "items": [
+        "Cardio: 25 minutes (morning & evening)"
+      ]
+    }
+  ]
+}

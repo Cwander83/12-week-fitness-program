@@ -1,0 +1,68 @@
+{
+  "id": "week-11",
+  "weekNumber": 11,
+  "phaseNumber": 3,
+  "phaseTitle": "Peak DTP Shock",
+  "weekTheme": "Pure DTP Legs, Chest/Back & Press",
+  "startDay": 71,
+  "endDay": 77,
+  "workoutDaysCount": 3,
+  "restDaysCount": 4,
+  "cardioSummary": "25 min pre & post",
+  "twistsSummary": "150 pre & post",
+  "days": [
+    {
+      "dayNumber": 71,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 72,
+      "title": "Rest",
+      "shortSplit": "Rest",
+      "isRestDay": true,
+      "restMode": "full-rest",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 73,
+      "title": "Legs",
+      "shortSplit": "DTP Leg",
+      "isRestDay": false,
+      "hasDtp": true
+    },
+    {
+      "dayNumber": 74,
+      "title": "Chest / Back",
+      "shortSplit": "DTP C/B",
+      "isRestDay": false,
+      "hasDtp": true
+    },
+    {
+      "dayNumber": 75,
+      "title": "Shoulders / Calves / Abs",
+      "shortSplit": "DTP Sh",
+      "isRestDay": false,
+      "hasDtp": true
+    },
+    {
+      "dayNumber": 76,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    },
+    {
+      "dayNumber": 77,
+      "title": "Rest (Active Cardio)",
+      "shortSplit": "Cardio",
+      "isRestDay": true,
+      "restMode": "active-recovery",
+      "hasDtp": false
+    }
+  ]
+}
