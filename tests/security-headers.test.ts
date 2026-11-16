@@ -102,3 +102,14 @@ describe('vercel.ts security & cache headers', () => {
     expect(csp).toContain(`'${expectedHashToken}'`);
   });
 });
+
+describe('vercel.ts git deployment policy', () => {
+  it('restricts automatic git deployments strictly to main', () => {
+    expect(config.git?.deploymentEnabled).toEqual({
+      '*': false,
+      '**': false,
+      develop: false,
+      main: true,
+    });
+  });
+});

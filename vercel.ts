@@ -25,6 +25,14 @@ const CONTENT_SECURITY_POLICY = [
 export const config: VercelConfig = {
   framework: 'astro',
   cleanUrls: true,
+  git: {
+    deploymentEnabled: {
+      '*': false,
+      '**': false,
+      develop: false,
+      main: true,
+    },
+  },
   headers: [
     routes.header('/(.*)', [
       { key: 'Content-Security-Policy', value: CONTENT_SECURITY_POLICY },
