@@ -521,6 +521,21 @@ function initApp(): void {
       const labelEl = link.querySelector<HTMLElement>('[data-jump-next-label]') ?? link;
       labelEl.textContent = nextDay !== null ? `Jump to Day ${nextDay}` : 'Review Day 1';
     }
+
+    if (!document.querySelector('[data-complete-day]') && window.location.pathname === '/') {
+      for (const thumbNext of document.querySelectorAll<HTMLAnchorElement>('a[data-thumb-next]')) {
+        if (count > 0 && count < TOTAL_DAYS && nextDay !== null) {
+          thumbNext.setAttribute('href', `/day/${nextDay}`);
+          thumbNext.setAttribute(
+            'aria-label',
+            nextMeta ? `Continue Day ${nextDay} — ${nextMeta.title}` : `Continue Day ${nextDay}`,
+          );
+        } else {
+          thumbNext.setAttribute('href', '/day/1');
+          thumbNext.setAttribute('aria-label', 'Day 1');
+        }
+      }
+    }
   };
 
   hydrateProgressUI(completedDays);

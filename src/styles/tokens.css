@@ -13,7 +13,9 @@
     /* Crisp Daylight / Gym Dark Mode Palette */
     --canvas: light-dark(#FAFAFA, #0B0C0E);
     --surface: light-dark(#FFFFFF, #14161B);
+    --surface-hover: light-dark(#F5F5F2, #1C1F26);
     --band: light-dark(#F1F1EE, #1B1E24);
+    --band-hover: light-dark(#E5E5E0, #252932);
     --ink: light-dark(#111214, #F4F5F7);
     --muted: light-dark(#4A4D52, #A5AAB4);
     /* >= 3.0:1 non-text contrast on both --surface and --band */
@@ -22,6 +24,7 @@
 
     /* Signal Vermilion & Semantic Accents */
     --vermilion: light-dark(#D9381E, #FF5A3D);
+    --vermilion-hover: light-dark(#BF2E16, #FF7057);
     --vermilion-text: light-dark(#B82B14, #FF765E);
     --vermilion-ink: light-dark(#FFFFFF, #0B0C0E);
     --cobalt: light-dark(#1D4ED8, #60A5FA);
@@ -76,12 +79,15 @@
     :root {
       --canvas: Canvas;
       --surface: Canvas;
+      --surface-hover: Canvas;
       --band: Canvas;
+      --band-hover: Canvas;
       --ink: CanvasText;
       --muted: CanvasText;
       --control-border: ButtonBorder;
       --rule: ButtonBorder;
       --vermilion: Highlight;
+      --vermilion-hover: Highlight;
       --vermilion-text: Highlight;
       --vermilion-ink: HighlightText;
       --cobalt: Highlight;
