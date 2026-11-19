@@ -28,7 +28,7 @@ const { dayNumber, nextDay } = Astro.props;
     <span class="complete-status tabular" data-complete-status role="status" aria-live="polite">
       0 / 84 Complete
     </span>
-    {nextDay && (
+    {nextDay ? (
       <a
         href={`/day/${nextDay.dayNumber}`}
         class="btn-hit btn-outline tabular up-next-btn"
@@ -36,6 +36,19 @@ const { dayNumber, nextDay } = Astro.props;
         hidden
       >
         <span>Up Next: Day {nextDay.dayNumber} — {nextDay.title}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+    ) : (
+      <a
+        href="/"
+        class="btn-hit btn-outline tabular up-next-btn"
+        data-up-next-link
+        hidden
+      >
+        <span>Program Complete — Return to Overview</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />

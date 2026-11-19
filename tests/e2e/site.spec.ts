@@ -324,6 +324,7 @@ test.describe('Whole-Day Completion, Continuation, Quick-Switcher, ?p= Backup, &
     const heroCta = page.locator('[data-hero-cta]');
     await expect(heroCta).toContainText('Continue Day 2 — Chest / Triceps');
     await expect(heroCta).toHaveAttribute('href', '/day/2');
+    await expect(page.locator('footer a[data-thumb-next]')).toHaveAttribute('href', '/day/2');
     await expect(page.locator('main [data-progress-summary]')).toContainText('1 / 84');
     await expect(page.locator('[role="progressbar"]')).toHaveAttribute('aria-valuenow', '1');
 
@@ -339,6 +340,18 @@ test.describe('Whole-Day Completion, Continuation, Quick-Switcher, ?p= Backup, &
     await expect(dialog.locator('[data-day-cell="1"]')).toHaveAttribute('data-state', 'completed');
     await expect(dialog.locator('[data-day-cell="2"]')).toHaveAttribute('data-state', 'next');
     await expect(dialog.locator('[data-switcher-jump-next]')).toHaveAttribute('href', '/day/2');
+
+    const truncatedCells = await page.evaluate(() => {
+      const cells = document.querySelectorAll<HTMLElement>('#quick-switcher .cell-split');
+      const truncated: string[] = [];
+      for (const cell of cells) {
+        if (cell.scrollWidth > cell.clientWidth + 1) {
+          truncated.push(`${cell.textContent?.trim() ?? ''} (${cell.scrollWidth} > ${cell.clientWidth})`);
+        }
+      }
+      return truncated;
+    });
+    expect(truncatedCells, 'Expected zero truncated .cell-split labels in #quick-switcher').toEqual([]);
 
     // 4. Copy ?p= backup link and test restore in a completely fresh browser context
     await dialog.locator('[data-copy-backup]').click();
@@ -374,11 +387,23 @@ test.describe('Whole-Day Completion, Continuation, Quick-Switcher, ?p= Backup, &
     await expect(dialog.locator('[data-reset-label]')).toHaveText('Reset');
     await expect(dialog.locator('[data-progress-summary]')).toContainText('0 / 84');
     await expect(heroCta).toContainText('Start Day 1 — Legs');
+    await expect(page.locator('footer a[data-thumb-next]')).toHaveAttribute('href', '/day/1');
     expect(await page.evaluate(() => localStorage.getItem('trainer_completed_v1'))).toBeNull();
 
     // 6. Escape closes Quick-Switcher dialog cleanly
     await page.keyboard.press('Escape');
     await expect(dialog).not.toHaveAttribute('open', '');
+
+    // 7. Verify Day 84 completion reveals connected overview return link
+    await page.goto(`${server.baseUrl}/day/84`, { waitUntil: 'networkidle' });
+    const complete84Btn = page.locator('button[data-complete-day="84"]');
+    await expect(page.locator('[data-up-next-link]')).toBeHidden();
+    await complete84Btn.click();
+    await expect(complete84Btn).toHaveAttribute('aria-pressed', 'true');
+    const upNext84 = page.locator('[data-up-next-link]');
+    await expect(upNext84).toBeVisible();
+    await expect(upNext84).toHaveAttribute('href', '/');
+    await expect(upNext84).toContainText('Program Complete — Return to Overview');
 
     await assertCleanTelemetry(page, telemetry);
     await context.close();
